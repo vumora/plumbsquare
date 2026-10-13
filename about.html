@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About PlumbSquare — Precision Carpentry & Woodworking Lab</title>
+<meta name="description" content="Learn how PlumbSquare builds IRC code-referenced carpentry, framing, and cabinetmaking layout calculators with live SVG blueprints.">
+<meta name="author" content="PlumbSquare Engineering & Carpentry Lab">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://plumbsquare.github.io/about.html">
+<meta property="og:title" content="About PlumbSquare — Precision Carpentry & Woodworking Lab">
+<meta property="og:description" content="Learn how PlumbSquare builds IRC code-referenced carpentry, framing, and cabinetmaking layout calculators with live SVG blueprints.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumbsquare.github.io/about.html">
+<meta property="og:image" content="https://plumbsquare.github.io/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="512x512" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<link rel="stylesheet" href="assets/style.css?v=2">
+<style id="ps-inline-css">
+/* ==========================================================================
+   PlumbSquare — Precision Carpentry, Framing & Woodworking Calculators
+   Design System: Workshop Slate + Blueprint Navy + Cedar Amber
+   100% Mobile-Responsive (Zero Horizontal Overflow), Print-Ready (@media print)
+   ========================================================================== */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-alt: #edf1f7;
+  --blueprint-bg: #0f1e36;
+  --blueprint-grid: rgba(120, 175, 255, 0.12);
+  --blueprint-line: #60a5fa;
+  --blueprint-accent: #fbbf24;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --primary: #1d4ed8;
+  --primary-dark: #1e3a8a;
+  --accent: #d97706;
+  --accent-light: #fef3c7;
+  --success: #047857;
+  --success-bg: #ecfdf5;
+  --ok: #047857;
+  --ok-bg: #ecfdf5;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --border: #d1d5db;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(15, 30, 54, 0.07);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header & Navigation */
+.site-header {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #111827;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.brand span {
+  color: var(--blueprint-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--blueprint-accent);
+}
+
+/* Global Unit Toggle Pill */
+.unit-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.unit-btn {
+  background: transparent;
+  color: #d1d5db;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.unit-btn.active {
+  background: var(--blueprint-accent);
+  color: #111827;
+}
+
+@media (max-width: 680px) {
+  .nav-bar {
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .nav-bar nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .nav-links {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .unit-btn {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 14px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0f1e36 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 34px 24px;
+  border-radius: var(--radius);
+  margin: 16px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #0f1e36 0%, #172e5c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+}
+
+.hero-badge,
+.hero-tag {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--blueprint-accent);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  line-height: 1.22;
+  font-weight: 800;
+  margin-bottom: 12px;
+  max-width: 820px;
+}
+
+.hero h1 span {
+  color: var(--blueprint-accent);
+}
+
+.hero p {
+  color: #d1d5db;
+  font-size: 1.02rem;
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+
+.hero-badges,
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.trust-pill,
+.hero-stat {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f3f4f6;
+}
+
+.hero-stat strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--blueprint-accent);
+}
+
+.hero-stat span {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin: 18px 0 6px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tool Layout Grid — minmax(0, ...) prevents grid children from causing horizontal overflow */
+.calc-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 22px;
+  margin: 14px 0 28px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .calc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 15px 14px;
+  }
+}
+
+.panel-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+/* Preset Pills */
+.preset-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.preset-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.preset-btn:hover {
+  background: #dbeafe;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Form Controls */
+.field-group {
+  margin-bottom: 13px;
+  min-width: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+label,
+.field-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+label .unit-hint {
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.input-row {
+  width: 100%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.96rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.field-help {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+/* Blueprint Diagram Box */
+.blueprint-card {
+  background: var(--blueprint-bg);
+  border-radius: 10px;
+  padding: 14px;
+  color: #fff;
+  margin-bottom: 16px;
+  border: 1px solid #1e3a8a;
+  max-width: 100%;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.blueprint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #93c5fd;
+  font-family: var(--font-mono);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+.svg-stage {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.svg-stage svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* KPI Result Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.kpi-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.kpi-card.highlight {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.kpi-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.kpi-val {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  font-family: var(--font-mono);
+  line-height: 1.25;
+}
+
+.kpi-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Code Compliance Status Banner */
+.code-status {
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.code-status.pass {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+
+.code-status.warn {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* Action Toolbar (PNG Export, Print, Share Link) */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.action-btn,
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.action-btn.primary,
+.btn-action.primary {
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-color: var(--blueprint-bg);
+}
+
+.action-btn:hover,
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Data Tables & Cut Lists */
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+table.data-table th {
+  background: var(--blueprint-bg);
+  color: #fff;
+  padding: 9px 10px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table.data-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+table.data-table tr:nth-child(even) td {
+  background: var(--surface-alt);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* Cards Grid for Homepage */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 18px 0 36px;
+  width: 100%;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+}
+
+.tool-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.tool-card h3 {
+  font-size: 1.15rem;
+  color: var(--blueprint-bg);
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tool-card-link {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Technical Guide Article Styling */
+article.guide-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 22px 0;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  article.guide-content {
+    padding: 18px 14px;
+  }
+}
+
+article.guide-content h1 {
+  font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+  color: var(--blueprint-bg);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+article.guide-content h2 {
+  font-size: clamp(1.18rem, 2.8vw, 1.4rem);
+  color: var(--blueprint-bg);
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+article.guide-content h3 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin: 18px 0 8px;
+}
+
+article.guide-content p,
+article.guide-content li {
+  margin-bottom: 12px;
+  color: #1f2937;
+  overflow-wrap: break-word;
+}
+
+article.guide-content ul,
+article.guide-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.formula-box {
+  background: #0f1e36;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-left: 4px solid var(--accent);
+}
+
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 13px 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.faq-list details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.faq-list summary {
+  font-weight: 700;
+  color: var(--blueprint-bg);
+  cursor: pointer;
+}
+
+.faq-list details p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+}
+
+.author-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blueprint-bg);
+  color: var(--blueprint-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #9ca3af;
+  padding: 36px 0 28px;
+  margin-top: 48px;
+  font-size: 0.88rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 0.96rem;
+}
+
+.site-footer ul {
+  list-style: none;
+}
+
+.site-footer li {
+  margin-bottom: 7px;
+}
+
+.site-footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Toast Notification */
+.ps-toast {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  left: 18px;
+  max-width: 360px;
+  margin-left: auto;
+  background: #0f1e36;
+  color: #fff;
+  border: 1px solid var(--blueprint-accent);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Print Stylesheet (@media print) */
+@media print {
+  .site-header,
+  .site-footer,
+  .preset-bar,
+  .action-bar,
+  .breadcrumb,
+  article.guide-content {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .calc-workspace {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+
+/* Rock-Solid Mobile Viewport Lock (320px - 960px) */
+html, body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  position: relative;
+}
+.site-header, .site-footer, .container, .calc-workspace, .panel, .field-group, .field-row, .blueprint-card, .svg-stage, .table-wrap, article.guide-content {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+select, input[type="number"], input[type="text"], input[type="email"], textarea {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-overflow: ellipsis;
+}
+@media (max-width: 960px) {
+  .calc-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .calc-workspace > .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 680px) {
+  .nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .nav-bar .brand {
+    justify-content: space-between;
+  }
+  .nav-bar nav {
+    order: 2 !important;
+    width: 100% !important;
+    overflow-x: visible !important;
+  }
+  .nav-links {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px 12px !important;
+  }
+  .unit-switch {
+    order: 3 !important;
+    align-self: flex-start !important;
+  }
+}
+
+</style>
+<script id="ps-inline-js">
+/*!
+ * PlumbSquare — Core Carpentry Math, Fractional Tape-Measure Engine,
+ * URL Permalink State, and Jobsite Blueprint PNG Exporter (assets/app.js)
+ * 100% Client-Side, Zero External Dependencies.
+ */
+(function () {
+  "use strict";
+
+  function gcd(a, b) {
+    a = Math.abs(Math.round(a));
+    b = Math.abs(Math.round(b));
+    while (b) {
+      var t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  var PS = {
+    unitMode: localStorage.getItem("ps_unit_mode") || "imperial", // 'imperial' | 'metric'
+
+    /* Convert decimal inches to nearest 1/16" (or 1/32") tape-measure string */
+    toFraction: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      var neg = inches < 0 ? "-" : "";
+      var val = Math.abs(inches);
+      var whole = Math.floor(val + 1e-9);
+      var rem = val - whole;
+      var num = Math.round(rem * denom);
+      if (num === denom) {
+        whole += 1;
+        num = 0;
+      }
+      if (num === 0) return neg + whole + '"';
+      var g = gcd(num, denom);
+      var n = num / g;
+      var d = denom / g;
+      return neg + (whole > 0 ? whole + " " : "") + n + "/" + d + '"';
+    },
+
+    /* Convert decimal inches to Feet + Fractional Inches: e.g. 14' 6 3/16" */
+    toFeetInches: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        return (mm / 1000).toFixed(2) + " m (" + Math.round(mm) + " mm)";
+      }
+      var totalSixteenths = Math.round(Math.abs(inches) * denom);
+      var totalIn = totalSixteenths / denom;
+      var ft = Math.floor(totalIn / 12 + 1e-9);
+      var remIn = totalIn - ft * 12;
+      if (ft === 0) return PS.toFraction(remIn, denom);
+      return ft + "' " + PS.toFraction(remIn, denom);
+    },
+
+    /* Format a length (stored internally in inches) according to active unit mode */
+    fmtLen: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        if (Math.abs(mm) >= 1000) {
+          return (mm / 1000).toFixed(3) + " m (" + Math.round(mm) + " mm)";
+        }
+        return Math.round(mm) + " mm";
+      }
+      return PS.toFraction(inches, denom || 16);
+    },
+
+    /* Format dual output: e.g., 14 3/16" (360 mm) */
+    fmtDual: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      var frac = PS.toFraction(inches, denom || 16);
+      var mm = Math.round(inches * 25.4);
+      return PS.unitMode === "metric"
+        ? mm + " mm (" + frac + ")"
+        : frac + " (" + mm + " mm)";
+    },
+
+    /* Parse user input string that may be decimal ("14.375") or fraction ("14 3/8") */
+    parseFrac: function (str) {
+      if (typeof str === "number") return str;
+      str = String(str || "").trim().replace(/"|in|mm|cm/gi, "").trim();
+      if (!str) return 0;
+      var parts = str.split(/\s+/);
+      if (parts.length === 2 && parts[1].indexOf("/") > -1) {
+        var whole = parseFloat(parts[0]) || 0;
+        var f = parts[1].split("/");
+        var frac = (parseFloat(f[0]) || 0) / (parseFloat(f[1]) || 1);
+        return whole >= 0 ? whole + frac : whole - frac;
+      }
+      if (str.indexOf("/") > -1) {
+        var f2 = str.split("/");
+        return (parseFloat(f2[0]) || 0) / (parseFloat(f2[1]) || 1);
+      }
+      return parseFloat(str) || 0;
+    },
+
+    /* Toast notification */
+    toast: function (msg) {
+      var old = document.querySelector(".ps-toast");
+      if (old) old.remove();
+      var el = document.createElement("div");
+      el.className = "ps-toast";
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () {
+        if (el.parentNode) el.remove();
+      }, 2800);
+    },
+
+    /* Switch global unit mode */
+    setUnitMode: function (mode) {
+      PS.unitMode = mode === "metric" ? "metric" : "imperial";
+      try {
+        localStorage.setItem("ps_unit_mode", PS.unitMode);
+      } catch (e) {}
+      document.querySelectorAll(".unit-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-unit") === PS.unitMode);
+      });
+      if (typeof window.onPSUnitChange === "function") {
+        window.onPSUnitChange(PS.unitMode);
+      }
+    },
+
+    /* Load URL query parameters into form inputs (#id) */
+    loadUrlParams: function () {
+      var params = new URLSearchParams(window.location.search);
+      var loaded = false;
+      params.forEach(function (val, key) {
+        if (key === "unit" && (val === "imperial" || val === "metric")) {
+          PS.unitMode = val;
+          return;
+        }
+        var el = document.getElementById(key);
+        if (el && (el.tagName === "INPUT" || el.tagName === "SELECT")) {
+          if (el.type === "checkbox") el.checked = val === "1" || val === "true";
+          else el.value = val;
+          loaded = true;
+        }
+      });
+      return loaded;
+    },
+
+    /* Copy shareable permalink with current calculator inputs */
+    copyShareLink: function () {
+      var params = new URLSearchParams();
+      params.set("unit", PS.unitMode);
+      document.querySelectorAll(".calc-workspace input, .calc-workspace select").forEach(function (el) {
+        if (!el.id) return;
+        if (el.type === "checkbox") params.set(el.id, el.checked ? "1" : "0");
+        else if (el.value !== "") params.set(el.id, el.value);
+      });
+      var url = window.location.origin + window.location.pathname + "?" + params.toString();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          PS.toast("✅ Shareable project link copied to clipboard!");
+        });
+      } else {
+        window.prompt("Copy your project link:", url);
+      }
+    },
+
+    /* Render current SVG diagram + KPIs + Cut List into a high-res PNG shop card */
+    exportBlueprintPNG: function (toolTitle) {
+      var svgEl = document.querySelector(".svg-stage svg");
+      var kpis = [];
+      document.querySelectorAll(".kpi-card").forEach(function (c) {
+        var lbl = c.querySelector(".kpi-label");
+        var val = c.querySelector(".kpi-val");
+        var sub = c.querySelector(".kpi-sub");
+        if (lbl && val) {
+          kpis.push({
+            label: lbl.textContent.trim(),
+            value: val.textContent.trim(),
+            sub: sub ? sub.textContent.trim() : ""
+          });
+        }
+      });
+
+      var rows = [];
+      var table = document.querySelector(".calc-workspace table.data-table");
+      if (table) {
+        table.querySelectorAll("tr").forEach(function (tr, idx) {
+          if (idx > 10) return;
+          var cells = [];
+          tr.querySelectorAll("th, td").forEach(function (td) {
+            cells.push(td.textContent.trim());
+          });
+          if (cells.length) rows.push(cells);
+        });
+      }
+
+      var canvas = document.createElement("canvas");
+      var W = 1200;
+      var tableH = rows.length ? 48 + rows.length * 34 : 0;
+      var H = 640 + tableH;
+      canvas.width = W;
+      canvas.height = H;
+      var ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#0f1e36";
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle Blueprint Grid
+      ctx.strokeStyle = "rgba(96, 165, 250, 0.12)";
+      ctx.lineWidth = 1;
+      for (var gx = 0; gx < W; gx += 25) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+      }
+      for (var gy = 0; gy < H; gy += 25) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+
+      // Header Banner
+      ctx.fillStyle = "#172e5c";
+      ctx.fillRect(0, 0, W, 78);
+      ctx.fillStyle = "#fbbf24";
+      ctx.fillRect(0, 75, W, 3);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
+      ctx.fillText("PLUMBSQUARE · JOBSITE CUT & LAYOUT SHEET", 32, 48);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(toolTitle || document.title.split("–")[0].trim(), W - 32, 48);
+      ctx.textAlign = "left";
+
+      // Draw KPI boxes on the left
+      var kx = 32, ky = 104;
+      kpis.slice(0, 6).forEach(function (k, idx) {
+        var col = idx % 2;
+        var row = Math.floor(idx / 2);
+        var bx = kx + col * 220;
+        var by = ky + row * 94;
+        ctx.fillStyle = "rgba(255,255,255,0.07)";
+        ctx.strokeStyle = "rgba(147,197,253,0.35)";
+        ctx.lineWidth = 1.5;
+        ctx.fillRect(bx, by, 206, 82);
+        ctx.strokeRect(bx, by, 206, 82);
+
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "bold 12px system-ui, sans-serif";
+        ctx.fillText(k.label.toUpperCase().slice(0, 26), bx + 12, by + 24);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px monospace";
+        ctx.fillText(k.value.slice(0, 16), bx + 12, by + 52);
+
+        if (k.sub) {
+          ctx.fillStyle = "#d1d5db";
+          ctx.font = "11px system-ui, sans-serif";
+          ctx.fillText(k.sub.slice(0, 28), bx + 12, by + 71);
+        }
+      });
+
+      function finishAndDownload() {
+        // Draw table if present
+        if (rows.length) {
+          var ty = 420;
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "bold 16px system-ui, sans-serif";
+          ctx.fillText("TAPE-MEASURE HOOK MARKS / CUT SCHEDULE", 32, ty - 12);
+          var colW = Math.floor((W - 64) / (rows[0].length || 1));
+          rows.forEach(function (r, rIdx) {
+            var ry = ty + rIdx * 32;
+            ctx.fillStyle = rIdx === 0 ? "#1e3a8a" : (rIdx % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.1)");
+            ctx.fillRect(32, ry, W - 64, 30);
+            ctx.fillStyle = rIdx === 0 ? "#fbbf24" : "#f3f4f6";
+            ctx.font = (rIdx === 0 ? "bold 13px " : "13px ") + "monospace";
+            r.forEach(function (cell, cIdx) {
+              ctx.fillText(String(cell).slice(0, 28), 44 + cIdx * colW, ry + 20);
+            });
+          });
+        }
+
+        // Footer
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "13px system-ui, sans-serif";
+        ctx.fillText("Generated free on PlumbSquare · Verify all measurements on-site before cutting lumber.", 32, H - 18);
+
+        var a = document.createElement("a");
+        var slug = (location.pathname.split("/").pop() || "blueprint").replace(/\.html$/, "");
+        a.download = "plumbsquare-" + slug + "-plan.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+        PS.toast("📷 Jobsite Blueprint PNG downloaded!");
+      }
+
+      if (svgEl) {
+        var xml = new XMLSerializer().serializeToString(svgEl);
+        var svg64 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
+        var img = new Image();
+        img.onload = function () {
+          ctx.drawImage(img, 485, 100, 680, 290);
+          finishAndDownload();
+        };
+        img.onerror = finishAndDownload;
+        img.src = svg64;
+      } else {
+        finishAndDownload();
+      }
+    }
+  };
+
+  window.PS = PS;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".unit-btn").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-unit") === PS.unitMode);
+      btn.addEventListener("click", function () {
+        PS.setUnitMode(btn.getAttribute("data-unit"));
+      });
+    });
+  });
+})();
+
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "AboutPage", "name": "About PlumbSquare"}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="index.html">
+      <span class="brand-icon">📐</span>
+      Plumb<span>Square</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html#calculators">Calculators</a></li>
+        <li><a href="guides/index.html">Shop Guides</a></li>
+        <li><a href="guides/nominal-vs-actual-lumber-chart.html">Lumber Chart</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="unit-switch" role="group" aria-label="Measurement Unit System">
+      <button type="button" class="unit-btn active" data-unit="imperial">🇺🇸 Imperial (1/16")</button>
+      <button type="button" class="unit-btn" data-unit="metric">🌍 Metric (mm)</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <nav class="breadcrumb"><a href="index.html">Home</a> › About PlumbSquare</nav>
+  <article class="guide-content">
+    <h1>About PlumbSquare Carpentry & Engineering Lab</h1>
+    <p><strong>PlumbSquare</strong> was built by finish carpenters, residential framers, and structural woodworkers who were tired of standing at the miter saw multiplying decimal numbers by 16 on a smartphone screen. Our mission is simple: deliver <strong>instant, code-checked, visually scaled CAD blueprints and 1/16-inch tape-measure layout tables</strong> that work directly in your mobile or desktop browser with zero sign-up walls.</p>
+
+    <h2>Our Engineering Standards & Code Verification</h2>
+    <p>Every calculator on PlumbSquare is engineered from primary industry standards and verified against physical shop layouts:</p>
+    <ul>
+      <li><strong>Residential Building Codes:</strong> Our <a href="tools/stair-stringer-calculator.html">Stair Stringer Calculator</a>, <a href="tools/wall-stud-framing-calculator.html">Wall Framing Calculator</a>, and <a href="tools/deck-board-joist-calculator.html">Deck Joist Calculator</a> reference the <strong>2026 International Residential Code (IRC R311.7, R312.1.3, R507, and R602)</strong> as well as the American Wood Council (AWC) <em>Prescriptive Residential Wood Deck Construction Guide (DCA 6)</em>.</li>
+      <li><strong>Wood Mechanics & Timber Physics:</strong> Our <a href="tools/cabinet-shelf-sag-calculator.html">Cabinet Shelf Sag Calculator</a> uses empirical Modulus of Elasticity (MOE) values from the <strong>USDA Forest Products Laboratory <em>Wood Handbook: Wood as an Engineering Material</em></strong>.</li>
+      <li><strong>Hardwood Grading Rules:</strong> Our <a href="tools/board-foot-calculator.html">Hardwood Board Foot Calculator</a> follows National Hardwood Lumber Association (NHLA) rough-lumber quarter designations (4/4 through 16/4).</li>
+    </ul>
+
+    <h2>Global Imperial (1/16") + Metric (mm/cm) Support</h2>
+    <p>Whether you frame in feet and 1/16-inch fractions in the United States and Canada or build cabinetry in millimeters across the United Kingdom, Australia, New Zealand, and Europe, PlumbSquare's global unit switcher updates every input badge and output measurement in real time.</p>
+  </article>
+</div>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>📐 PlumbSquare Carpentry & Framing Lab</h4>
+        <p style="margin-bottom:12px">Precision browser-based layout calculators, 2D cut-list optimizers, and IRC code-checked blueprints for North American, UK, Canadian, and Australian builders, woodworkers, and DIY homeowners. 100% client-side, zero login required.</p>
+        <p style="font-size:0.82rem;color:#93c5fd">✓ Imperial Tape-Measure Fractions (1/16") &nbsp;·&nbsp; ✓ Metric (mm/cm) &nbsp;·&nbsp; ✓ Printable Shop Cut Sheets</p>
+      </div>
+      <div>
+        <h4>Layout Calculators</h4>
+        <ul>
+          <li><a href="tools/stair-stringer-calculator.html">Stair Stringer Calculator</a></li>
+          <li><a href="tools/board-and-batten-calculator.html">Board & Batten Layout</a></li>
+          <li><a href="tools/even-spacing-calculator.html">Even Spacing & Balusters</a></li>
+          <li><a href="tools/plywood-cut-list-optimizer.html">Plywood Cut Optimizer</a></li>
+          <li><a href="tools/board-foot-calculator.html">Board Foot (BDFT) Tally</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Framing & Exterior</h4>
+        <ul>
+          <li><a href="tools/wall-stud-framing-calculator.html">Wall Stud Framing (16/24 OC)</a></li>
+          <li><a href="tools/deck-board-joist-calculator.html">Deck Board & Joist Estimator</a></li>
+          <li><a href="tools/fence-post-picket-calculator.html">Fence Post & Concrete Bags</a></li>
+          <li><a href="tools/crown-molding-miter-calculator.html">Crown Molding Miter Angles</a></li>
+          <li><a href="tools/cabinet-shelf-sag-calculator.html">Cabinet Shelf Sag Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reference & Legal</h4>
+        <ul>
+          <li><a href="guides/index.html">All Carpentry Guides</a></li>
+          <li><a href="guides/nominal-vs-actual-lumber-chart.html">Nominal vs Actual Sizes</a></li>
+          <li><a href="guides/irc-stair-building-code-guide.html">IRC Stair Code Guide</a></li>
+          <li><a href="about.html">About & Methodology</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="disclaimer.html">Building Code Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PlumbSquare — Precision Woodworking & Construction Utilities. All calculations run locally in your browser.</span>
+      <span>Verify all structural dimensions against local municipal building codes before cutting lumber.</span>
+    </div>
+  </div>
+</footer>
+<script defer src="assets/app.js?v=2"></script>
+</body>
+</html>

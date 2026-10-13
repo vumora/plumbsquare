@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck Calculator – Deck Boards, Joists, Concrete Footings & Fasteners | PlumbSquare</title>
+<meta name="description" content="Free deck material calculator for 5/4x6, 2x6, and composite decking. Estimates surface boards, joists at 12" or 16" OC, concrete pier footings, and hidden clips.">
+<meta name="author" content="PlumbSquare Engineering & Carpentry Lab">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://plumbsquare.github.io/tools/deck-board-joist-calculator.html">
+<meta property="og:title" content="Deck Calculator – Deck Boards, Joists, Concrete Footings & Fasteners | PlumbSquare">
+<meta property="og:description" content="Free deck material calculator for 5/4x6, 2x6, and composite decking. Estimates surface boards, joists at 12" or 16" OC, concrete pier footings, and hidden clips.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumbsquare.github.io/tools/deck-board-joist-calculator.html">
+<meta property="og:image" content="https://plumbsquare.github.io/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="512x512" href="../images/logo.png">
+<link rel="apple-touch-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../assets/style.css?v=2">
+<style id="ps-inline-css">
+/* ==========================================================================
+   PlumbSquare — Precision Carpentry, Framing & Woodworking Calculators
+   Design System: Workshop Slate + Blueprint Navy + Cedar Amber
+   100% Mobile-Responsive (Zero Horizontal Overflow), Print-Ready (@media print)
+   ========================================================================== */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-alt: #edf1f7;
+  --blueprint-bg: #0f1e36;
+  --blueprint-grid: rgba(120, 175, 255, 0.12);
+  --blueprint-line: #60a5fa;
+  --blueprint-accent: #fbbf24;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --primary: #1d4ed8;
+  --primary-dark: #1e3a8a;
+  --accent: #d97706;
+  --accent-light: #fef3c7;
+  --success: #047857;
+  --success-bg: #ecfdf5;
+  --ok: #047857;
+  --ok-bg: #ecfdf5;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --border: #d1d5db;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(15, 30, 54, 0.07);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header & Navigation */
+.site-header {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #111827;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.brand span {
+  color: var(--blueprint-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--blueprint-accent);
+}
+
+/* Global Unit Toggle Pill */
+.unit-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.unit-btn {
+  background: transparent;
+  color: #d1d5db;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.unit-btn.active {
+  background: var(--blueprint-accent);
+  color: #111827;
+}
+
+@media (max-width: 680px) {
+  .nav-bar {
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .nav-bar nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .nav-links {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .unit-btn {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 14px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0f1e36 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 34px 24px;
+  border-radius: var(--radius);
+  margin: 16px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #0f1e36 0%, #172e5c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+}
+
+.hero-badge,
+.hero-tag {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--blueprint-accent);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  line-height: 1.22;
+  font-weight: 800;
+  margin-bottom: 12px;
+  max-width: 820px;
+}
+
+.hero h1 span {
+  color: var(--blueprint-accent);
+}
+
+.hero p {
+  color: #d1d5db;
+  font-size: 1.02rem;
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+
+.hero-badges,
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.trust-pill,
+.hero-stat {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f3f4f6;
+}
+
+.hero-stat strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--blueprint-accent);
+}
+
+.hero-stat span {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin: 18px 0 6px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tool Layout Grid — minmax(0, ...) prevents grid children from causing horizontal overflow */
+.calc-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 22px;
+  margin: 14px 0 28px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .calc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 15px 14px;
+  }
+}
+
+.panel-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+/* Preset Pills */
+.preset-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.preset-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.preset-btn:hover {
+  background: #dbeafe;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Form Controls */
+.field-group {
+  margin-bottom: 13px;
+  min-width: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+label,
+.field-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+label .unit-hint {
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.input-row {
+  width: 100%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.96rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.field-help {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+/* Blueprint Diagram Box */
+.blueprint-card {
+  background: var(--blueprint-bg);
+  border-radius: 10px;
+  padding: 14px;
+  color: #fff;
+  margin-bottom: 16px;
+  border: 1px solid #1e3a8a;
+  max-width: 100%;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.blueprint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #93c5fd;
+  font-family: var(--font-mono);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+.svg-stage {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.svg-stage svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* KPI Result Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.kpi-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.kpi-card.highlight {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.kpi-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.kpi-val {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  font-family: var(--font-mono);
+  line-height: 1.25;
+}
+
+.kpi-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Code Compliance Status Banner */
+.code-status {
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.code-status.pass {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+
+.code-status.warn {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* Action Toolbar (PNG Export, Print, Share Link) */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.action-btn,
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.action-btn.primary,
+.btn-action.primary {
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-color: var(--blueprint-bg);
+}
+
+.action-btn:hover,
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Data Tables & Cut Lists */
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+table.data-table th {
+  background: var(--blueprint-bg);
+  color: #fff;
+  padding: 9px 10px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table.data-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+table.data-table tr:nth-child(even) td {
+  background: var(--surface-alt);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* Cards Grid for Homepage */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 18px 0 36px;
+  width: 100%;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+}
+
+.tool-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.tool-card h3 {
+  font-size: 1.15rem;
+  color: var(--blueprint-bg);
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tool-card-link {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Technical Guide Article Styling */
+article.guide-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 22px 0;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  article.guide-content {
+    padding: 18px 14px;
+  }
+}
+
+article.guide-content h1 {
+  font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+  color: var(--blueprint-bg);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+article.guide-content h2 {
+  font-size: clamp(1.18rem, 2.8vw, 1.4rem);
+  color: var(--blueprint-bg);
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+article.guide-content h3 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin: 18px 0 8px;
+}
+
+article.guide-content p,
+article.guide-content li {
+  margin-bottom: 12px;
+  color: #1f2937;
+  overflow-wrap: break-word;
+}
+
+article.guide-content ul,
+article.guide-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.formula-box {
+  background: #0f1e36;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-left: 4px solid var(--accent);
+}
+
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 13px 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.faq-list details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.faq-list summary {
+  font-weight: 700;
+  color: var(--blueprint-bg);
+  cursor: pointer;
+}
+
+.faq-list details p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+}
+
+.author-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blueprint-bg);
+  color: var(--blueprint-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #9ca3af;
+  padding: 36px 0 28px;
+  margin-top: 48px;
+  font-size: 0.88rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 0.96rem;
+}
+
+.site-footer ul {
+  list-style: none;
+}
+
+.site-footer li {
+  margin-bottom: 7px;
+}
+
+.site-footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Toast Notification */
+.ps-toast {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  left: 18px;
+  max-width: 360px;
+  margin-left: auto;
+  background: #0f1e36;
+  color: #fff;
+  border: 1px solid var(--blueprint-accent);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Print Stylesheet (@media print) */
+@media print {
+  .site-header,
+  .site-footer,
+  .preset-bar,
+  .action-bar,
+  .breadcrumb,
+  article.guide-content {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .calc-workspace {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+
+/* Rock-Solid Mobile Viewport Lock (320px - 960px) */
+html, body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  position: relative;
+}
+.site-header, .site-footer, .container, .calc-workspace, .panel, .field-group, .field-row, .blueprint-card, .svg-stage, .table-wrap, article.guide-content {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+select, input[type="number"], input[type="text"], input[type="email"], textarea {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-overflow: ellipsis;
+}
+@media (max-width: 960px) {
+  .calc-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .calc-workspace > .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 680px) {
+  .nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .nav-bar .brand {
+    justify-content: space-between;
+  }
+  .nav-bar nav {
+    order: 2 !important;
+    width: 100% !important;
+    overflow-x: visible !important;
+  }
+  .nav-links {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px 12px !important;
+  }
+  .unit-switch {
+    order: 3 !important;
+    align-self: flex-start !important;
+  }
+}
+
+</style>
+<script id="ps-inline-js">
+/*!
+ * PlumbSquare — Core Carpentry Math, Fractional Tape-Measure Engine,
+ * URL Permalink State, and Jobsite Blueprint PNG Exporter (assets/app.js)
+ * 100% Client-Side, Zero External Dependencies.
+ */
+(function () {
+  "use strict";
+
+  function gcd(a, b) {
+    a = Math.abs(Math.round(a));
+    b = Math.abs(Math.round(b));
+    while (b) {
+      var t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  var PS = {
+    unitMode: localStorage.getItem("ps_unit_mode") || "imperial", // 'imperial' | 'metric'
+
+    /* Convert decimal inches to nearest 1/16" (or 1/32") tape-measure string */
+    toFraction: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      var neg = inches < 0 ? "-" : "";
+      var val = Math.abs(inches);
+      var whole = Math.floor(val + 1e-9);
+      var rem = val - whole;
+      var num = Math.round(rem * denom);
+      if (num === denom) {
+        whole += 1;
+        num = 0;
+      }
+      if (num === 0) return neg + whole + '"';
+      var g = gcd(num, denom);
+      var n = num / g;
+      var d = denom / g;
+      return neg + (whole > 0 ? whole + " " : "") + n + "/" + d + '"';
+    },
+
+    /* Convert decimal inches to Feet + Fractional Inches: e.g. 14' 6 3/16" */
+    toFeetInches: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        return (mm / 1000).toFixed(2) + " m (" + Math.round(mm) + " mm)";
+      }
+      var totalSixteenths = Math.round(Math.abs(inches) * denom);
+      var totalIn = totalSixteenths / denom;
+      var ft = Math.floor(totalIn / 12 + 1e-9);
+      var remIn = totalIn - ft * 12;
+      if (ft === 0) return PS.toFraction(remIn, denom);
+      return ft + "' " + PS.toFraction(remIn, denom);
+    },
+
+    /* Format a length (stored internally in inches) according to active unit mode */
+    fmtLen: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        if (Math.abs(mm) >= 1000) {
+          return (mm / 1000).toFixed(3) + " m (" + Math.round(mm) + " mm)";
+        }
+        return Math.round(mm) + " mm";
+      }
+      return PS.toFraction(inches, denom || 16);
+    },
+
+    /* Format dual output: e.g., 14 3/16" (360 mm) */
+    fmtDual: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      var frac = PS.toFraction(inches, denom || 16);
+      var mm = Math.round(inches * 25.4);
+      return PS.unitMode === "metric"
+        ? mm + " mm (" + frac + ")"
+        : frac + " (" + mm + " mm)";
+    },
+
+    /* Parse user input string that may be decimal ("14.375") or fraction ("14 3/8") */
+    parseFrac: function (str) {
+      if (typeof str === "number") return str;
+      str = String(str || "").trim().replace(/"|in|mm|cm/gi, "").trim();
+      if (!str) return 0;
+      var parts = str.split(/\s+/);
+      if (parts.length === 2 && parts[1].indexOf("/") > -1) {
+        var whole = parseFloat(parts[0]) || 0;
+        var f = parts[1].split("/");
+        var frac = (parseFloat(f[0]) || 0) / (parseFloat(f[1]) || 1);
+        return whole >= 0 ? whole + frac : whole - frac;
+      }
+      if (str.indexOf("/") > -1) {
+        var f2 = str.split("/");
+        return (parseFloat(f2[0]) || 0) / (parseFloat(f2[1]) || 1);
+      }
+      return parseFloat(str) || 0;
+    },
+
+    /* Toast notification */
+    toast: function (msg) {
+      var old = document.querySelector(".ps-toast");
+      if (old) old.remove();
+      var el = document.createElement("div");
+      el.className = "ps-toast";
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () {
+        if (el.parentNode) el.remove();
+      }, 2800);
+    },
+
+    /* Switch global unit mode */
+    setUnitMode: function (mode) {
+      PS.unitMode = mode === "metric" ? "metric" : "imperial";
+      try {
+        localStorage.setItem("ps_unit_mode", PS.unitMode);
+      } catch (e) {}
+      document.querySelectorAll(".unit-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-unit") === PS.unitMode);
+      });
+      if (typeof window.onPSUnitChange === "function") {
+        window.onPSUnitChange(PS.unitMode);
+      }
+    },
+
+    /* Load URL query parameters into form inputs (#id) */
+    loadUrlParams: function () {
+      var params = new URLSearchParams(window.location.search);
+      var loaded = false;
+      params.forEach(function (val, key) {
+        if (key === "unit" && (val === "imperial" || val === "metric")) {
+          PS.unitMode = val;
+          return;
+        }
+        var el = document.getElementById(key);
+        if (el && (el.tagName === "INPUT" || el.tagName === "SELECT")) {
+          if (el.type === "checkbox") el.checked = val === "1" || val === "true";
+          else el.value = val;
+          loaded = true;
+        }
+      });
+      return loaded;
+    },
+
+    /* Copy shareable permalink with current calculator inputs */
+    copyShareLink: function () {
+      var params = new URLSearchParams();
+      params.set("unit", PS.unitMode);
+      document.querySelectorAll(".calc-workspace input, .calc-workspace select").forEach(function (el) {
+        if (!el.id) return;
+        if (el.type === "checkbox") params.set(el.id, el.checked ? "1" : "0");
+        else if (el.value !== "") params.set(el.id, el.value);
+      });
+      var url = window.location.origin + window.location.pathname + "?" + params.toString();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          PS.toast("✅ Shareable project link copied to clipboard!");
+        });
+      } else {
+        window.prompt("Copy your project link:", url);
+      }
+    },
+
+    /* Render current SVG diagram + KPIs + Cut List into a high-res PNG shop card */
+    exportBlueprintPNG: function (toolTitle) {
+      var svgEl = document.querySelector(".svg-stage svg");
+      var kpis = [];
+      document.querySelectorAll(".kpi-card").forEach(function (c) {
+        var lbl = c.querySelector(".kpi-label");
+        var val = c.querySelector(".kpi-val");
+        var sub = c.querySelector(".kpi-sub");
+        if (lbl && val) {
+          kpis.push({
+            label: lbl.textContent.trim(),
+            value: val.textContent.trim(),
+            sub: sub ? sub.textContent.trim() : ""
+          });
+        }
+      });
+
+      var rows = [];
+      var table = document.querySelector(".calc-workspace table.data-table");
+      if (table) {
+        table.querySelectorAll("tr").forEach(function (tr, idx) {
+          if (idx > 10) return;
+          var cells = [];
+          tr.querySelectorAll("th, td").forEach(function (td) {
+            cells.push(td.textContent.trim());
+          });
+          if (cells.length) rows.push(cells);
+        });
+      }
+
+      var canvas = document.createElement("canvas");
+      var W = 1200;
+      var tableH = rows.length ? 48 + rows.length * 34 : 0;
+      var H = 640 + tableH;
+      canvas.width = W;
+      canvas.height = H;
+      var ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#0f1e36";
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle Blueprint Grid
+      ctx.strokeStyle = "rgba(96, 165, 250, 0.12)";
+      ctx.lineWidth = 1;
+      for (var gx = 0; gx < W; gx += 25) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+      }
+      for (var gy = 0; gy < H; gy += 25) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+
+      // Header Banner
+      ctx.fillStyle = "#172e5c";
+      ctx.fillRect(0, 0, W, 78);
+      ctx.fillStyle = "#fbbf24";
+      ctx.fillRect(0, 75, W, 3);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
+      ctx.fillText("PLUMBSQUARE · JOBSITE CUT & LAYOUT SHEET", 32, 48);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(toolTitle || document.title.split("–")[0].trim(), W - 32, 48);
+      ctx.textAlign = "left";
+
+      // Draw KPI boxes on the left
+      var kx = 32, ky = 104;
+      kpis.slice(0, 6).forEach(function (k, idx) {
+        var col = idx % 2;
+        var row = Math.floor(idx / 2);
+        var bx = kx + col * 220;
+        var by = ky + row * 94;
+        ctx.fillStyle = "rgba(255,255,255,0.07)";
+        ctx.strokeStyle = "rgba(147,197,253,0.35)";
+        ctx.lineWidth = 1.5;
+        ctx.fillRect(bx, by, 206, 82);
+        ctx.strokeRect(bx, by, 206, 82);
+
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "bold 12px system-ui, sans-serif";
+        ctx.fillText(k.label.toUpperCase().slice(0, 26), bx + 12, by + 24);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px monospace";
+        ctx.fillText(k.value.slice(0, 16), bx + 12, by + 52);
+
+        if (k.sub) {
+          ctx.fillStyle = "#d1d5db";
+          ctx.font = "11px system-ui, sans-serif";
+          ctx.fillText(k.sub.slice(0, 28), bx + 12, by + 71);
+        }
+      });
+
+      function finishAndDownload() {
+        // Draw table if present
+        if (rows.length) {
+          var ty = 420;
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "bold 16px system-ui, sans-serif";
+          ctx.fillText("TAPE-MEASURE HOOK MARKS / CUT SCHEDULE", 32, ty - 12);
+          var colW = Math.floor((W - 64) / (rows[0].length || 1));
+          rows.forEach(function (r, rIdx) {
+            var ry = ty + rIdx * 32;
+            ctx.fillStyle = rIdx === 0 ? "#1e3a8a" : (rIdx % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.1)");
+            ctx.fillRect(32, ry, W - 64, 30);
+            ctx.fillStyle = rIdx === 0 ? "#fbbf24" : "#f3f4f6";
+            ctx.font = (rIdx === 0 ? "bold 13px " : "13px ") + "monospace";
+            r.forEach(function (cell, cIdx) {
+              ctx.fillText(String(cell).slice(0, 28), 44 + cIdx * colW, ry + 20);
+            });
+          });
+        }
+
+        // Footer
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "13px system-ui, sans-serif";
+        ctx.fillText("Generated free on PlumbSquare · Verify all measurements on-site before cutting lumber.", 32, H - 18);
+
+        var a = document.createElement("a");
+        var slug = (location.pathname.split("/").pop() || "blueprint").replace(/\.html$/, "");
+        a.download = "plumbsquare-" + slug + "-plan.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+        PS.toast("📷 Jobsite Blueprint PNG downloaded!");
+      }
+
+      if (svgEl) {
+        var xml = new XMLSerializer().serializeToString(svgEl);
+        var svg64 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
+        var img = new Image();
+        img.onload = function () {
+          ctx.drawImage(img, 485, 100, 680, 290);
+          finishAndDownload();
+        };
+        img.onerror = finishAndDownload;
+        img.src = svg64;
+      } else {
+        finishAndDownload();
+      }
+    }
+  };
+
+  window.PS = PS;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".unit-btn").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-unit") === PS.unitMode);
+      btn.addEventListener("click", function () {
+        PS.setUnitMode(btn.getAttribute("data-unit"));
+      });
+    });
+  });
+})();
+
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Deck Board, Joist & Footing Estimator", "applicationCategory": "DesignApplication", "operatingSystem": "Web Browser", "url": "https://plumbsquare.github.io/tools/deck-board-joist-calculator.html", "description": "Free online deck board, joist, pier footing, and hidden fastener calculator for 5/4x6, 2x6, and composite decking.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the actual width of a 5/4x6 or 2x6 deck board?", "acceptedAnswer": {"@type": "Answer", "text": "Both nominal 5/4×6 wood decking, 2×6 dimensional decking, and standard composite deck boards (Trex, TimberTech) have an actual face width of 5 1/2 inches (140 mm). When installed with a standard 3/16 inch (4.8 mm) drainage gap between boards, each row covers 5.6875 inches of deck projection."}}, {"@type": "Question", "name": "Should deck joists be spaced at 12 inches or 16 inches on center?", "acceptedAnswer": {"@type": "Answer", "text": "Standard wood decking (5/4×6 PT pine, cedar, or 2×6) laid perpendicular to the joists uses 16-inch on-center joist spacing. However, composite or PVC decking (or any decking laid at a 45-degree diagonal angle) typically requires 12-inch on-center joist spacing to prevent bouncy underfoot flex."}}, {"@type": "Question", "name": "How many deck screws or hidden fasteners do I need per square foot?", "acceptedAnswer": {"@type": "Answer", "text": "Each intersection where a 5 1/2 inch wide deck board crosses a joist requires 2 face screws (or 1 hidden clip plus 1 screw). At 16-inch OC joist spacing, count approximately 3.5 face screws (or 1.75 hidden clips) per square foot of deck area. Always buy 316 stainless steel or ACQ-rated coated exterior structural screws."}}, {"@type": "Question", "name": "How many concrete footings (sonotubes) does a ledger-attached deck require?", "acceptedAnswer": {"@type": "Answer", "text": "A rectangular deck attached to the house rim joist with a flashed ledger board uses one main support beam resting on posts spaced every 6 to 8 feet along the beam length, requiring ceil(Deck_Length_Ft ÷ 7) + 1 concrete pier footings. A freestanding (floating) deck requires two beams and double the footing count."}}, {"@type": "Question", "name": "What is the correct gap between wood vs composite deck boards?", "acceptedAnswer": {"@type": "Answer", "text": "Kiln-dried cedar or composite decking requires a 3/16 inch (5 mm) gap for water drainage and thermal expansion. Wet pressure-treated (PT) pine shrinks as it dries in the sun and should be installed tightly together (or with an 8d nail spacer, 1/8\") so the gaps don't widen beyond 1/4\" after seasoning."}}]}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="../index.html">
+      <span class="brand-icon">📐</span>
+      Plumb<span>Square</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html#calculators">Calculators</a></li>
+        <li><a href="../guides/index.html">Shop Guides</a></li>
+        <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Lumber Chart</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="unit-switch" role="group" aria-label="Measurement Unit System">
+      <button type="button" class="unit-btn active" data-unit="imperial">🇺🇸 Imperial (1/16")</button>
+      <button type="button" class="unit-btn" data-unit="metric">🌍 Metric (mm)</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#calculators">Calculators</a> › Deck Board & Joist Calculator</nav>
+  <div class="calc-workspace">
+    <div class="panel">
+      <div class="panel-title">🪵 Deck Dimensions & Framing Spec</div>
+      <div class="preset-bar">
+        <button type="button" class="preset-btn" onclick="setDeckPreset(16, 12, 5.5, 0.1875, 16, 'ledger')">16×12 Backyard Deck</button>
+        <button type="button" class="preset-btn" onclick="setDeckPreset(20, 14, 5.5, 0.1875, 12, 'ledger')">20×14 Composite (12" OC)</button>
+        <button type="button" class="preset-btn" onclick="setDeckPreset(12, 10, 5.5, 0.125, 16, 'floating')">12×10 Floating Patio Deck</button>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="deckLenFt">Deck Length (Along House) <span class="unit-hint">feet</span></label>
+          <input type="number" id="deckLenFt" value="16" min="4" max="120" step="0.5" oninput="calcDeck()">
+        </div>
+        <div class="field-group">
+          <label for="deckProjectionFt">Deck Width (Projection Out) <span class="unit-hint">feet</span></label>
+          <input type="number" id="deckProjectionFt" value="12" min="4" max="60" step="0.5" oninput="calcDeck()">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="deckBoardW">Deck Board Actual Width <span class="unit-hint">inches</span></label>
+          <select id="deckBoardW" onchange="calcDeck()">
+            <option value="5.5" selected>5 1/2" (5/4×6, 2×6, or Standard Composite)</option>
+            <option value="3.5">3 1/2" (2×4 or Narrow Hardwood Ipe)</option>
+            <option value="7.25">7 1/4" (Wide-Plank 2×8 / Wide Composite)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="deckGap">Gap Between Boards <span class="unit-hint">inches</span></label>
+          <select id="deckGap" onchange="calcDeck()">
+            <option value="0.1875" selected>3/16" (0.188" — Composite / Dry Cedar)</option>
+            <option value="0.125">1/8" (0.125" — 8d Nail Gap)</option>
+            <option value="0.0625">1/16" (0.063" — Wet PT Pine)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="joistOC">Joist On-Center Spacing <span class="unit-hint">inches</span></label>
+          <select id="joistOC" onchange="calcDeck()">
+            <option value="16" selected>16" OC (Standard Wood Decking)</option>
+            <option value="12">12" OC (Composite / Diagonal Decking)</option>
+            <option value="24">24" OC (Heavy 2x Plank Only)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="deckMount">Structure Support Type</label>
+          <select id="deckMount" onchange="calcDeck()">
+            <option value="ledger" selected>Ledger-Attached to House (1 Support Beam)</option>
+            <option value="floating">Freestanding / Floating (2 Support Beams)</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="btn-primary" onclick="calcDeck()">Calculate Deck Material Takeoff</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Deck Framing Plan & Surface Board Takeoff</span>
+        <span id="deckAreaBadge" style="font-size:0.82rem;color:#1d4ed8;font-family:monospace"></span>
+      </div>
+      <div id="deckStatus" class="code-status pass"></div>
+      <div class="blueprint-card">
+        <div class="blueprint-header">
+          <span>TOP-DOWN JOIST, BEAM & FOOTING PLAN</span>
+          <span id="deckJoistReadout">JOISTS: —</span>
+        </div>
+        <div class="svg-stage" id="deckSvgBox"></div>
+      </div>
+      <div class="kpi-grid" id="deckKpis"></div>
+      <div class="action-bar">
+        <button type="button" class="action-btn primary" onclick="PS.exportBlueprintPNG('Deck Material & Joist Plan')">📷 Download Deck Blueprint (PNG)</button>
+        <button type="button" class="action-btn" onclick="window.print()">🖨️ Print 1-Page Shop Sheet</button>
+        <button type="button" class="action-btn" onclick="PS.copyShareLink()">🔗 Share Project Link</button>
+      </div>
+      <h3 style="font-size:1.05rem;color:#0f1e36;margin-top:10px">Complete Deck Lumber, Hardware & Footing Shopping List</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="deckTable">
+          <thead>
+            <tr><th>Deck Component</th><th>Net Count</th><th>Order Qty (+10% Waste)</th><th>Specification</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <article class="guide-content">
+    <h1>Deck Board, Joist & Footing Calculator (5/4×6, 2×6 & Composite Estimator)</h1>
+    <p>Planning a wood or composite deck requires coordinating two separate framing layers: the <strong>structural substructure</strong> (ledger board, 2×8 or 2×10 joists, joist hangers, double support beams, and concrete pier footings) and the <strong>surface decking layer</strong> (decking boards, drainage gaps, and hidden clips or face screws). This calculator computes both layers simultaneously and renders a scaled top-down framing diagram.</p>
+    <figure style="margin:20px 0;text-align:center"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20760%20210%22%20width%3D%22760%22%20height%3D%22210%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22760%22%20height%3D%22210%22%20rx%3D%2210%22%20fill%3D%22%230f1e36%22/%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22rgba%2896%2C165%2C250%2C0.14%29%22%20stroke-width%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%2240%22%20x2%3D%22760%22%20y2%3D%2240%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22760%22%20y2%3D%2280%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%22120%22%20x2%3D%22760%22%20y2%3D%22120%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22760%22%20y2%3D%22160%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22120%22%20y1%3D%220%22%20x2%3D%22120%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22280%22%20y1%3D%220%22%20x2%3D%22280%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22440%22%20y1%3D%220%22%20x2%3D%22440%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22600%22%20y1%3D%220%22%20x2%3D%22600%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2220%22%20y%3D%2220%22%20width%3D%22720%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22none%22%20stroke%3D%22%2360a5fa%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%226%2C4%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2258%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2215%22%20font-weight%3D%22bold%22%3ETECHNICAL%20REFERENCE%20SPECIFICATION%20%C2%B7%20PLUMBSQUARE%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2292%22%20fill%3D%22%23ffffff%22%20font-family%3D%22sans-serif%22%20font-size%3D%2221%22%20font-weight%3D%22bold%22%3EDeck%20Substructure%20%26%20Surface%20Board%20Formula%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%22122%22%20fill%3D%22%2393c5fd%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%3EEffective%20Row%20Pitch%20%3D%20Actual%20Board%20Width%20%2B%20Drainage%20Gap%20%285.5%20in%20%2B%200.1875%20in%20%3D%205.6875%20in%29%3C/text%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2242%22%20y%3D%22138%22%20width%3D%22676%22%20height%3D%2236%22%20rx%3D%225%22%20fill%3D%22%23172e5c%22%20stroke%3D%22%23fbbf24%22%20stroke-width%3D%221%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2256%22%20y%3D%22161%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%3EDeck%20Board%20Rows%20%3D%20ceil%28%20%28Deck_Projection_Ft%20x%2012%29%20/%20%28Board_Width%20%2B%20Gap%29%20%29%3C/text%3E%0A%20%20%20%20%3C/svg%3E" alt="Deck Substructure & Surface Board Formula - Effective Row Pitch = Actual Board Width + Drainage Gap (5.5 in + 0.1875 in = 5.6875 in) diagram" width="760" height="210" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #d1d5db"><figcaption style="font-size:0.84rem;color:#4b5563;margin-top:6px">Figure 1: Architectural field layout reference for Deck Substructure & Surface Board Formula (Effective Row Pitch = Actual Board Width + Drainage Gap (5.5 in + 0.1875 in = 5.6875 in)).</figcaption></figure>
+    <h2>1. How to Calculate Deck Boards, Joists & Fasteners</h2>
+    <div class="formula-box">
+      Deck Board Rows (Along Projection) = ceil( (Projection_Ft × 12) ÷ (Board_Width_in + Gap_in) )<br>
+      Total Decking Linear Feet = Deck_Board_Rows × Deck_Length_Ft<br>
+      Interior + End Joists = ceil( (Deck_Length_Ft × 12) ÷ Joist_OC_in ) + 1<br>
+      Face Screws Needed = Deck_Board_Rows × Joist_Count × 2 screws per crossing
+    </div>
+    <h2>2. Maximum Deck Joist Span Reference (2026 IRC Table R507.6 — Southern Pine #2)</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Joist Lumber Size</th><th>12" OC Max Span</th><th>16" OC Max Span</th><th>24" OC Max Span</th><th>Max Cantilever Overhang</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>2×6 PT Joist</strong></td><td class="mono">9' 11"</td><td class="mono">9' 0"</td><td class="mono">7' 7"</td><td class="mono">2' 2" (L/4 rule)</td></tr>
+          <tr><td><strong>2×8 PT Joist</strong></td><td class="mono">13' 1"</td><td class="mono">11' 10"</td><td class="mono">9' 8"</td><td class="mono">2' 11"</td></tr>
+          <tr><td><strong>2×10 PT Joist</strong></td><td class="mono">16' 2"</td><td class="mono">14' 0"</td><td class="mono">11' 5"</td><td class="mono">3' 5"</td></tr>
+          <tr><td><strong>2×12 PT Joist</strong></td><td class="mono">18' 0"</td><td class="mono">16' 6"</td><td class="mono">13' 6"</td><td class="mono">4' 1"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>3. Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details><summary>What is the actual width of a 5/4x6 or 2x6 deck board?</summary><p>Both nominal 5/4×6 wood decking, 2×6 dimensional decking, and standard composite deck boards (Trex, TimberTech) have an actual face width of 5 1/2 inches (140 mm). When installed with a standard 3/16 inch (4.8 mm) drainage gap between boards, each row covers 5.6875 inches of deck projection.</p></details><details><summary>Should deck joists be spaced at 12 inches or 16 inches on center?</summary><p>Standard wood decking (5/4×6 PT pine, cedar, or 2×6) laid perpendicular to the joists uses 16-inch on-center joist spacing. However, composite or PVC decking (or any decking laid at a 45-degree diagonal angle) typically requires 12-inch on-center joist spacing to prevent bouncy underfoot flex.</p></details><details><summary>How many deck screws or hidden fasteners do I need per square foot?</summary><p>Each intersection where a 5 1/2 inch wide deck board crosses a joist requires 2 face screws (or 1 hidden clip plus 1 screw). At 16-inch OC joist spacing, count approximately 3.5 face screws (or 1.75 hidden clips) per square foot of deck area. Always buy 316 stainless steel or ACQ-rated coated exterior structural screws.</p></details><details><summary>How many concrete footings (sonotubes) does a ledger-attached deck require?</summary><p>A rectangular deck attached to the house rim joist with a flashed ledger board uses one main support beam resting on posts spaced every 6 to 8 feet along the beam length, requiring ceil(Deck_Length_Ft ÷ 7) + 1 concrete pier footings. A freestanding (floating) deck requires two beams and double the footing count.</p></details><details><summary>What is the correct gap between wood vs composite deck boards?</summary><p>Kiln-dried cedar or composite decking requires a 3/16 inch (5 mm) gap for water drainage and thermal expansion. Wet pressure-treated (PT) pine shrinks as it dries in the sun and should be installed tightly together (or with an 8d nail spacer, 1/8") so the gaps don't widen beyond 1/4" after seasoning.</p></details>
+    </div>
+    <div class="callout"><strong>🧰 Related Shop & Framing Calculators:</strong><ul style="margin-top:8px;margin-bottom:0"><li><a href="stair-stringer-calculator.html" style="font-weight:700;color:#1d4ed8">Stair Stringer & Rise/Run Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">IRC Code + 2D Stringer Cut Blueprint</span></li><li><a href="board-and-batten-calculator.html" style="font-weight:700;color:#1d4ed8">Board & Batten / Wainscoting Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">Equal Panel Width + Wall Elevation</span></li><li><a href="even-spacing-calculator.html" style="font-weight:700;color:#1d4ed8">Even Spacing & Baluster Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">1/16" On-Center + 4" Sphere Rule</span></li><li><a href="plywood-cut-list-optimizer.html" style="font-weight:700;color:#1d4ed8">Plywood Sheet & Cut-List Optimizer</a> — <span style="font-size:0.88rem;color:#4b5563">Kerf-Aware 2D Sheet Packing Map</span></li><li><a href="board-foot-calculator.html" style="font-weight:700;color:#1d4ed8">Hardwood Board Foot (BDFT) Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">4/4 to 16/4 Rough & S4S Lumber Tally</span></li></ul></div>
+    <div class="author-box">
+      <div class="author-avatar">PS</div>
+      <div>
+        <strong>Verified by PlumbSquare Exterior Decking & Framing Lab</strong>
+        <p style="margin:4px 0 0;font-size:0.88rem;color:#4b5563">Cross-referenced against 2026 IRC Section R507 Exterior Decks and DCA-6 Prescriptive Residential Wood Deck Construction Guide. Last updated October 2026.</p>
+      </div>
+    </div>
+  </article>
+</div>
+<script>
+function setDeckPreset(l, w, bw, gap, oc, mount) {
+  document.getElementById('deckLenFt').value = l;
+  document.getElementById('deckProjectionFt').value = w;
+  document.getElementById('deckBoardW').value = bw;
+  document.getElementById('deckGap').value = gap;
+  document.getElementById('joistOC').value = oc;
+  document.getElementById('deckMount').value = mount;
+  calcDeck();
+}
+function calcDeck() {
+  var lFt = parseFloat(document.getElementById('deckLenFt').value) || 16;
+  var wFt = parseFloat(document.getElementById('deckProjectionFt').value) || 12;
+  var bw = parseFloat(document.getElementById('deckBoardW').value) || 5.5;
+  var gap = parseFloat(document.getElementById('deckGap').value) || 0.1875;
+  var oc = parseFloat(document.getElementById('joistOC').value) || 16;
+  var mount = document.getElementById('deckMount').value;
+
+  var area = lFt * wFt;
+  var rows = Math.ceil((wFt * 12) / (bw + gap));
+  var deckLF = rows * lFt;
+  var boards16Ft = Math.ceil((deckLF * 1.1) / 16);
+  var joists = Math.ceil((lFt * 12) / oc) + 1;
+  var beams = mount === 'ledger' ? 1 : 2;
+  var piersPerBeam = Math.ceil(lFt / 7) + 1;
+  var totalPiers = piersPerBeam * beams;
+  var screws = Math.ceil(rows * joists * 2 * 1.1);
+  var clips = Math.ceil(rows * joists * 1.05);
+  var recJoist = wFt <= 9 ? '2×8 PT' : (wFt <= 14 ? '2×10 PT' : '2×12 PT');
+
+  document.getElementById('deckAreaBadge').textContent = area.toFixed(0) + ' Sq Ft · ' + rows + ' Decking Rows';
+  document.getElementById('deckJoistReadout').textContent = joists + ' JOISTS @ ' + oc + '" OC · REC: ' + recJoist;
+  var statusEl = document.getElementById('deckStatus');
+  statusEl.className = 'code-status pass';
+  statusEl.textContent = '✅ IRC R507 DECK TAKEOFF: ' + rows + ' rows of ' + PS.toFraction(bw) + ' decking over ' + joists + ' joists (' + recJoist + ' recommended for ' + wFt + ' ft span) & ' + totalPiers + ' concrete piers.';
+
+  var kpiHtml = [
+    { l: '16-Ft Decking Boards', v: boards16Ft + ' Boards', s: rows + ' rows (' + Math.ceil(deckLF) + ' net LF)', h: true },
+    { l: 'Framing Joists (' + wFt + ' ft)', v: joists + ' Joists', s: recJoist + ' @ ' + oc + '" OC + 2 rim boards', h: true },
+    { l: 'Concrete Pier Footings', v: totalPiers + ' Piers', s: beams + ' support beam(s) @ ≤7 ft post span' },
+    { l: 'Fasteners Needed', v: screws + ' Screws', s: 'Or ' + clips + ' hidden deck clips' }
+  ].map(function(k) {
+    return '<div class="kpi-card' + (k.h ? ' highlight' : '') + '"><div class="kpi-label">' + k.l + '</div><div class="kpi-val">' + k.v + '</div><div class="kpi-sub">' + k.s + '</div></div>';
+  }).join('');
+  document.getElementById('deckKpis').innerHTML = kpiHtml;
+
+  var svgW = 720, svgH = 240, padX = 50, padY = 26, drawW = svgW - padX * 2, drawH = 165;
+  var svg = '<svg width="100%" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">';
+  svg += '<rect x="' + padX + '" y="' + padY + '" width="' + drawW + '" height="' + drawH + '" fill="#172e5c" stroke="#fbbf24" stroke-width="2.5"/>';
+  for (var j = 1; j < joists - 1; j++) {
+    var jx = padX + (j / (joists - 1)) * drawW;
+    svg += '<line x1="' + jx.toFixed(1) + '" y1="' + padY + '" x2="' + jx.toFixed(1) + '" y2="' + (padY + drawH) + '" stroke="#60a5fa" stroke-width="1.5"/>';
+  }
+  for (var p = 0; p < piersPerBeam; p++) {
+    var px = padX + (p / Math.max(1, piersPerBeam - 1)) * drawW;
+    svg += '<circle cx="' + px.toFixed(1) + '" cy="' + (padY + drawH - 18) + '" r="8" fill="#fbbf24" stroke="#0f1e36" stroke-width="2"/>';
+    if (beams === 2) svg += '<circle cx="' + px.toFixed(1) + '" cy="' + (padY + 18) + '" r="8" fill="#fbbf24" stroke="#0f1e36" stroke-width="2"/>';
+  }
+  svg += '<text x="' + (svgW / 2) + '" y="' + (svgH - 10) + '" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="12">DECK PLAN: ' + lFt + ' ft × ' + wFt + ' ft (' + area + ' SQ FT) · ' + joists + ' JOISTS @ ' + oc + '" OC · YELLOW CIRCLES = CONCRETE PIERS</text></svg>';
+  document.getElementById('deckSvgBox').innerHTML = svg;
+
+  var tbody = [
+    ['Surface Decking Boards (16-ft Lengths)', Math.ceil(deckLF / 16) + ' pcs', boards16Ft + ' pcs', rows + ' rows @ ' + PS.toFraction(bw) + ' wide + ' + PS.toFraction(gap) + ' gap'],
+    ['Interior & End Joists (' + recJoist + ' × ' + wFt + ' ft)', joists + ' pcs', Math.ceil(joists * 1.1) + ' pcs', oc + '" on-center spacing + mid-span blocking'],
+    ['Ledger & Rim Band Boards (' + recJoist + ' × ' + lFt + ' ft)', '2 pcs', '2 pcs', mount === 'ledger' ? '1 flashed house ledger + 1 outer rim joist' : 'Front & rear rim band joists'],
+    ['Double Support Beam Plies (2×10 × ' + lFt + ' ft)', (beams * 2) + ' plies', (beams * 2) + ' plies', beams + ' doubled drop beam(s) on 6×6 posts'],
+    ['Concrete Pier Footings (80-lb Bags)', totalPiers + ' holes', (totalPiers * 3) + ' bags', 'Approx. 3 bags (80-lb) per 12" diameter × 36" footing'],
+    ['Joist Hangers & Fasteners', (joists * 2) + ' hangers', screws + ' screws', 'Or ' + clips + ' hidden groove clips + starter clips']
+  ].map(function(r) {
+    return '<tr><td class="mono">' + r[0] + '</td><td class="mono">' + r[1] + '</td><td class="mono">' + r[2] + '</td><td>' + r[3] + '</td></tr>';
+  }).join('');
+  document.querySelector('#deckTable tbody').innerHTML = tbody;
+}
+window.onPSUnitChange = calcDeck;
+PS.loadUrlParams(); calcDeck(); document.addEventListener('DOMContentLoaded', function() { PS.loadUrlParams(); calcDeck(); });
+</script>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>📐 PlumbSquare Carpentry & Framing Lab</h4>
+        <p style="margin-bottom:12px">Precision browser-based layout calculators, 2D cut-list optimizers, and IRC code-checked blueprints for North American, UK, Canadian, and Australian builders, woodworkers, and DIY homeowners. 100% client-side, zero login required.</p>
+        <p style="font-size:0.82rem;color:#93c5fd">✓ Imperial Tape-Measure Fractions (1/16") &nbsp;·&nbsp; ✓ Metric (mm/cm) &nbsp;·&nbsp; ✓ Printable Shop Cut Sheets</p>
+      </div>
+      <div>
+        <h4>Layout Calculators</h4>
+        <ul>
+          <li><a href="../tools/stair-stringer-calculator.html">Stair Stringer Calculator</a></li>
+          <li><a href="../tools/board-and-batten-calculator.html">Board & Batten Layout</a></li>
+          <li><a href="../tools/even-spacing-calculator.html">Even Spacing & Balusters</a></li>
+          <li><a href="../tools/plywood-cut-list-optimizer.html">Plywood Cut Optimizer</a></li>
+          <li><a href="../tools/board-foot-calculator.html">Board Foot (BDFT) Tally</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Framing & Exterior</h4>
+        <ul>
+          <li><a href="../tools/wall-stud-framing-calculator.html">Wall Stud Framing (16/24 OC)</a></li>
+          <li><a href="../tools/deck-board-joist-calculator.html">Deck Board & Joist Estimator</a></li>
+          <li><a href="../tools/fence-post-picket-calculator.html">Fence Post & Concrete Bags</a></li>
+          <li><a href="../tools/crown-molding-miter-calculator.html">Crown Molding Miter Angles</a></li>
+          <li><a href="../tools/cabinet-shelf-sag-calculator.html">Cabinet Shelf Sag Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reference & Legal</h4>
+        <ul>
+          <li><a href="../guides/index.html">All Carpentry Guides</a></li>
+          <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Nominal vs Actual Sizes</a></li>
+          <li><a href="../guides/irc-stair-building-code-guide.html">IRC Stair Code Guide</a></li>
+          <li><a href="../about.html">About & Methodology</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Building Code Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PlumbSquare — Precision Woodworking & Construction Utilities. All calculations run locally in your browser.</span>
+      <span>Verify all structural dimensions against local municipal building codes before cutting lumber.</span>
+    </div>
+  </div>
+</footer>
+<script defer src="../assets/app.js?v=2"></script>
+</body>
+</html>

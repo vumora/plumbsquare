@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fence Calculator – Posts, 2x4 Rails, Pickets & Post-Hole Concrete Bags | PlumbSquare</title>
+<meta name="description" content="Free wood fence calculator. Estimate 4x4 or 6x6 posts, 2x4 horizontal rails, dog-ear or privacy pickets, and exact 80-lb/60-lb concrete bags per post hole.">
+<meta name="author" content="PlumbSquare Engineering & Carpentry Lab">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://plumbsquare.github.io/tools/fence-post-picket-calculator.html">
+<meta property="og:title" content="Fence Calculator – Posts, 2x4 Rails, Pickets & Post-Hole Concrete Bags | PlumbSquare">
+<meta property="og:description" content="Free wood fence calculator. Estimate 4x4 or 6x6 posts, 2x4 horizontal rails, dog-ear or privacy pickets, and exact 80-lb/60-lb concrete bags per post hole.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumbsquare.github.io/tools/fence-post-picket-calculator.html">
+<meta property="og:image" content="https://plumbsquare.github.io/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="512x512" href="../images/logo.png">
+<link rel="apple-touch-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../assets/style.css?v=2">
+<style id="ps-inline-css">
+/* ==========================================================================
+   PlumbSquare — Precision Carpentry, Framing & Woodworking Calculators
+   Design System: Workshop Slate + Blueprint Navy + Cedar Amber
+   100% Mobile-Responsive (Zero Horizontal Overflow), Print-Ready (@media print)
+   ========================================================================== */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-alt: #edf1f7;
+  --blueprint-bg: #0f1e36;
+  --blueprint-grid: rgba(120, 175, 255, 0.12);
+  --blueprint-line: #60a5fa;
+  --blueprint-accent: #fbbf24;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --primary: #1d4ed8;
+  --primary-dark: #1e3a8a;
+  --accent: #d97706;
+  --accent-light: #fef3c7;
+  --success: #047857;
+  --success-bg: #ecfdf5;
+  --ok: #047857;
+  --ok-bg: #ecfdf5;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --border: #d1d5db;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(15, 30, 54, 0.07);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header & Navigation */
+.site-header {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #111827;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.brand span {
+  color: var(--blueprint-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--blueprint-accent);
+}
+
+/* Global Unit Toggle Pill */
+.unit-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.unit-btn {
+  background: transparent;
+  color: #d1d5db;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.unit-btn.active {
+  background: var(--blueprint-accent);
+  color: #111827;
+}
+
+@media (max-width: 680px) {
+  .nav-bar {
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .nav-bar nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .nav-links {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .unit-btn {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 14px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0f1e36 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 34px 24px;
+  border-radius: var(--radius);
+  margin: 16px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #0f1e36 0%, #172e5c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+}
+
+.hero-badge,
+.hero-tag {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--blueprint-accent);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  line-height: 1.22;
+  font-weight: 800;
+  margin-bottom: 12px;
+  max-width: 820px;
+}
+
+.hero h1 span {
+  color: var(--blueprint-accent);
+}
+
+.hero p {
+  color: #d1d5db;
+  font-size: 1.02rem;
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+
+.hero-badges,
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.trust-pill,
+.hero-stat {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f3f4f6;
+}
+
+.hero-stat strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--blueprint-accent);
+}
+
+.hero-stat span {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin: 18px 0 6px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tool Layout Grid — minmax(0, ...) prevents grid children from causing horizontal overflow */
+.calc-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 22px;
+  margin: 14px 0 28px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .calc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 15px 14px;
+  }
+}
+
+.panel-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+/* Preset Pills */
+.preset-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.preset-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.preset-btn:hover {
+  background: #dbeafe;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Form Controls */
+.field-group {
+  margin-bottom: 13px;
+  min-width: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+label,
+.field-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+label .unit-hint {
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.input-row {
+  width: 100%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.96rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.field-help {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+/* Blueprint Diagram Box */
+.blueprint-card {
+  background: var(--blueprint-bg);
+  border-radius: 10px;
+  padding: 14px;
+  color: #fff;
+  margin-bottom: 16px;
+  border: 1px solid #1e3a8a;
+  max-width: 100%;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.blueprint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #93c5fd;
+  font-family: var(--font-mono);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+.svg-stage {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.svg-stage svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* KPI Result Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.kpi-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.kpi-card.highlight {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.kpi-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.kpi-val {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  font-family: var(--font-mono);
+  line-height: 1.25;
+}
+
+.kpi-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Code Compliance Status Banner */
+.code-status {
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.code-status.pass {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+
+.code-status.warn {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* Action Toolbar (PNG Export, Print, Share Link) */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.action-btn,
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.action-btn.primary,
+.btn-action.primary {
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-color: var(--blueprint-bg);
+}
+
+.action-btn:hover,
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Data Tables & Cut Lists */
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+table.data-table th {
+  background: var(--blueprint-bg);
+  color: #fff;
+  padding: 9px 10px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table.data-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+table.data-table tr:nth-child(even) td {
+  background: var(--surface-alt);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* Cards Grid for Homepage */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 18px 0 36px;
+  width: 100%;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+}
+
+.tool-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.tool-card h3 {
+  font-size: 1.15rem;
+  color: var(--blueprint-bg);
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tool-card-link {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Technical Guide Article Styling */
+article.guide-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 22px 0;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  article.guide-content {
+    padding: 18px 14px;
+  }
+}
+
+article.guide-content h1 {
+  font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+  color: var(--blueprint-bg);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+article.guide-content h2 {
+  font-size: clamp(1.18rem, 2.8vw, 1.4rem);
+  color: var(--blueprint-bg);
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+article.guide-content h3 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin: 18px 0 8px;
+}
+
+article.guide-content p,
+article.guide-content li {
+  margin-bottom: 12px;
+  color: #1f2937;
+  overflow-wrap: break-word;
+}
+
+article.guide-content ul,
+article.guide-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.formula-box {
+  background: #0f1e36;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-left: 4px solid var(--accent);
+}
+
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 13px 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.faq-list details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.faq-list summary {
+  font-weight: 700;
+  color: var(--blueprint-bg);
+  cursor: pointer;
+}
+
+.faq-list details p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+}
+
+.author-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blueprint-bg);
+  color: var(--blueprint-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #9ca3af;
+  padding: 36px 0 28px;
+  margin-top: 48px;
+  font-size: 0.88rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 0.96rem;
+}
+
+.site-footer ul {
+  list-style: none;
+}
+
+.site-footer li {
+  margin-bottom: 7px;
+}
+
+.site-footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Toast Notification */
+.ps-toast {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  left: 18px;
+  max-width: 360px;
+  margin-left: auto;
+  background: #0f1e36;
+  color: #fff;
+  border: 1px solid var(--blueprint-accent);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Print Stylesheet (@media print) */
+@media print {
+  .site-header,
+  .site-footer,
+  .preset-bar,
+  .action-bar,
+  .breadcrumb,
+  article.guide-content {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .calc-workspace {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+
+/* Rock-Solid Mobile Viewport Lock (320px - 960px) */
+html, body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  position: relative;
+}
+.site-header, .site-footer, .container, .calc-workspace, .panel, .field-group, .field-row, .blueprint-card, .svg-stage, .table-wrap, article.guide-content {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+select, input[type="number"], input[type="text"], input[type="email"], textarea {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-overflow: ellipsis;
+}
+@media (max-width: 960px) {
+  .calc-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .calc-workspace > .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 680px) {
+  .nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .nav-bar .brand {
+    justify-content: space-between;
+  }
+  .nav-bar nav {
+    order: 2 !important;
+    width: 100% !important;
+    overflow-x: visible !important;
+  }
+  .nav-links {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px 12px !important;
+  }
+  .unit-switch {
+    order: 3 !important;
+    align-self: flex-start !important;
+  }
+}
+
+</style>
+<script id="ps-inline-js">
+/*!
+ * PlumbSquare — Core Carpentry Math, Fractional Tape-Measure Engine,
+ * URL Permalink State, and Jobsite Blueprint PNG Exporter (assets/app.js)
+ * 100% Client-Side, Zero External Dependencies.
+ */
+(function () {
+  "use strict";
+
+  function gcd(a, b) {
+    a = Math.abs(Math.round(a));
+    b = Math.abs(Math.round(b));
+    while (b) {
+      var t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  var PS = {
+    unitMode: localStorage.getItem("ps_unit_mode") || "imperial", // 'imperial' | 'metric'
+
+    /* Convert decimal inches to nearest 1/16" (or 1/32") tape-measure string */
+    toFraction: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      var neg = inches < 0 ? "-" : "";
+      var val = Math.abs(inches);
+      var whole = Math.floor(val + 1e-9);
+      var rem = val - whole;
+      var num = Math.round(rem * denom);
+      if (num === denom) {
+        whole += 1;
+        num = 0;
+      }
+      if (num === 0) return neg + whole + '"';
+      var g = gcd(num, denom);
+      var n = num / g;
+      var d = denom / g;
+      return neg + (whole > 0 ? whole + " " : "") + n + "/" + d + '"';
+    },
+
+    /* Convert decimal inches to Feet + Fractional Inches: e.g. 14' 6 3/16" */
+    toFeetInches: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        return (mm / 1000).toFixed(2) + " m (" + Math.round(mm) + " mm)";
+      }
+      var totalSixteenths = Math.round(Math.abs(inches) * denom);
+      var totalIn = totalSixteenths / denom;
+      var ft = Math.floor(totalIn / 12 + 1e-9);
+      var remIn = totalIn - ft * 12;
+      if (ft === 0) return PS.toFraction(remIn, denom);
+      return ft + "' " + PS.toFraction(remIn, denom);
+    },
+
+    /* Format a length (stored internally in inches) according to active unit mode */
+    fmtLen: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        if (Math.abs(mm) >= 1000) {
+          return (mm / 1000).toFixed(3) + " m (" + Math.round(mm) + " mm)";
+        }
+        return Math.round(mm) + " mm";
+      }
+      return PS.toFraction(inches, denom || 16);
+    },
+
+    /* Format dual output: e.g., 14 3/16" (360 mm) */
+    fmtDual: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      var frac = PS.toFraction(inches, denom || 16);
+      var mm = Math.round(inches * 25.4);
+      return PS.unitMode === "metric"
+        ? mm + " mm (" + frac + ")"
+        : frac + " (" + mm + " mm)";
+    },
+
+    /* Parse user input string that may be decimal ("14.375") or fraction ("14 3/8") */
+    parseFrac: function (str) {
+      if (typeof str === "number") return str;
+      str = String(str || "").trim().replace(/"|in|mm|cm/gi, "").trim();
+      if (!str) return 0;
+      var parts = str.split(/\s+/);
+      if (parts.length === 2 && parts[1].indexOf("/") > -1) {
+        var whole = parseFloat(parts[0]) || 0;
+        var f = parts[1].split("/");
+        var frac = (parseFloat(f[0]) || 0) / (parseFloat(f[1]) || 1);
+        return whole >= 0 ? whole + frac : whole - frac;
+      }
+      if (str.indexOf("/") > -1) {
+        var f2 = str.split("/");
+        return (parseFloat(f2[0]) || 0) / (parseFloat(f2[1]) || 1);
+      }
+      return parseFloat(str) || 0;
+    },
+
+    /* Toast notification */
+    toast: function (msg) {
+      var old = document.querySelector(".ps-toast");
+      if (old) old.remove();
+      var el = document.createElement("div");
+      el.className = "ps-toast";
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () {
+        if (el.parentNode) el.remove();
+      }, 2800);
+    },
+
+    /* Switch global unit mode */
+    setUnitMode: function (mode) {
+      PS.unitMode = mode === "metric" ? "metric" : "imperial";
+      try {
+        localStorage.setItem("ps_unit_mode", PS.unitMode);
+      } catch (e) {}
+      document.querySelectorAll(".unit-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-unit") === PS.unitMode);
+      });
+      if (typeof window.onPSUnitChange === "function") {
+        window.onPSUnitChange(PS.unitMode);
+      }
+    },
+
+    /* Load URL query parameters into form inputs (#id) */
+    loadUrlParams: function () {
+      var params = new URLSearchParams(window.location.search);
+      var loaded = false;
+      params.forEach(function (val, key) {
+        if (key === "unit" && (val === "imperial" || val === "metric")) {
+          PS.unitMode = val;
+          return;
+        }
+        var el = document.getElementById(key);
+        if (el && (el.tagName === "INPUT" || el.tagName === "SELECT")) {
+          if (el.type === "checkbox") el.checked = val === "1" || val === "true";
+          else el.value = val;
+          loaded = true;
+        }
+      });
+      return loaded;
+    },
+
+    /* Copy shareable permalink with current calculator inputs */
+    copyShareLink: function () {
+      var params = new URLSearchParams();
+      params.set("unit", PS.unitMode);
+      document.querySelectorAll(".calc-workspace input, .calc-workspace select").forEach(function (el) {
+        if (!el.id) return;
+        if (el.type === "checkbox") params.set(el.id, el.checked ? "1" : "0");
+        else if (el.value !== "") params.set(el.id, el.value);
+      });
+      var url = window.location.origin + window.location.pathname + "?" + params.toString();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          PS.toast("✅ Shareable project link copied to clipboard!");
+        });
+      } else {
+        window.prompt("Copy your project link:", url);
+      }
+    },
+
+    /* Render current SVG diagram + KPIs + Cut List into a high-res PNG shop card */
+    exportBlueprintPNG: function (toolTitle) {
+      var svgEl = document.querySelector(".svg-stage svg");
+      var kpis = [];
+      document.querySelectorAll(".kpi-card").forEach(function (c) {
+        var lbl = c.querySelector(".kpi-label");
+        var val = c.querySelector(".kpi-val");
+        var sub = c.querySelector(".kpi-sub");
+        if (lbl && val) {
+          kpis.push({
+            label: lbl.textContent.trim(),
+            value: val.textContent.trim(),
+            sub: sub ? sub.textContent.trim() : ""
+          });
+        }
+      });
+
+      var rows = [];
+      var table = document.querySelector(".calc-workspace table.data-table");
+      if (table) {
+        table.querySelectorAll("tr").forEach(function (tr, idx) {
+          if (idx > 10) return;
+          var cells = [];
+          tr.querySelectorAll("th, td").forEach(function (td) {
+            cells.push(td.textContent.trim());
+          });
+          if (cells.length) rows.push(cells);
+        });
+      }
+
+      var canvas = document.createElement("canvas");
+      var W = 1200;
+      var tableH = rows.length ? 48 + rows.length * 34 : 0;
+      var H = 640 + tableH;
+      canvas.width = W;
+      canvas.height = H;
+      var ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#0f1e36";
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle Blueprint Grid
+      ctx.strokeStyle = "rgba(96, 165, 250, 0.12)";
+      ctx.lineWidth = 1;
+      for (var gx = 0; gx < W; gx += 25) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+      }
+      for (var gy = 0; gy < H; gy += 25) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+
+      // Header Banner
+      ctx.fillStyle = "#172e5c";
+      ctx.fillRect(0, 0, W, 78);
+      ctx.fillStyle = "#fbbf24";
+      ctx.fillRect(0, 75, W, 3);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
+      ctx.fillText("PLUMBSQUARE · JOBSITE CUT & LAYOUT SHEET", 32, 48);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(toolTitle || document.title.split("–")[0].trim(), W - 32, 48);
+      ctx.textAlign = "left";
+
+      // Draw KPI boxes on the left
+      var kx = 32, ky = 104;
+      kpis.slice(0, 6).forEach(function (k, idx) {
+        var col = idx % 2;
+        var row = Math.floor(idx / 2);
+        var bx = kx + col * 220;
+        var by = ky + row * 94;
+        ctx.fillStyle = "rgba(255,255,255,0.07)";
+        ctx.strokeStyle = "rgba(147,197,253,0.35)";
+        ctx.lineWidth = 1.5;
+        ctx.fillRect(bx, by, 206, 82);
+        ctx.strokeRect(bx, by, 206, 82);
+
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "bold 12px system-ui, sans-serif";
+        ctx.fillText(k.label.toUpperCase().slice(0, 26), bx + 12, by + 24);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px monospace";
+        ctx.fillText(k.value.slice(0, 16), bx + 12, by + 52);
+
+        if (k.sub) {
+          ctx.fillStyle = "#d1d5db";
+          ctx.font = "11px system-ui, sans-serif";
+          ctx.fillText(k.sub.slice(0, 28), bx + 12, by + 71);
+        }
+      });
+
+      function finishAndDownload() {
+        // Draw table if present
+        if (rows.length) {
+          var ty = 420;
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "bold 16px system-ui, sans-serif";
+          ctx.fillText("TAPE-MEASURE HOOK MARKS / CUT SCHEDULE", 32, ty - 12);
+          var colW = Math.floor((W - 64) / (rows[0].length || 1));
+          rows.forEach(function (r, rIdx) {
+            var ry = ty + rIdx * 32;
+            ctx.fillStyle = rIdx === 0 ? "#1e3a8a" : (rIdx % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.1)");
+            ctx.fillRect(32, ry, W - 64, 30);
+            ctx.fillStyle = rIdx === 0 ? "#fbbf24" : "#f3f4f6";
+            ctx.font = (rIdx === 0 ? "bold 13px " : "13px ") + "monospace";
+            r.forEach(function (cell, cIdx) {
+              ctx.fillText(String(cell).slice(0, 28), 44 + cIdx * colW, ry + 20);
+            });
+          });
+        }
+
+        // Footer
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "13px system-ui, sans-serif";
+        ctx.fillText("Generated free on PlumbSquare · Verify all measurements on-site before cutting lumber.", 32, H - 18);
+
+        var a = document.createElement("a");
+        var slug = (location.pathname.split("/").pop() || "blueprint").replace(/\.html$/, "");
+        a.download = "plumbsquare-" + slug + "-plan.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+        PS.toast("📷 Jobsite Blueprint PNG downloaded!");
+      }
+
+      if (svgEl) {
+        var xml = new XMLSerializer().serializeToString(svgEl);
+        var svg64 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
+        var img = new Image();
+        img.onload = function () {
+          ctx.drawImage(img, 485, 100, 680, 290);
+          finishAndDownload();
+        };
+        img.onerror = finishAndDownload;
+        img.src = svg64;
+      } else {
+        finishAndDownload();
+      }
+    }
+  };
+
+  window.PS = PS;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".unit-btn").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-unit") === PS.unitMode);
+      btn.addEventListener("click", function () {
+        PS.setUnitMode(btn.getAttribute("data-unit"));
+      });
+    });
+  });
+})();
+
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Wood Fence Post, Picket & Concrete Bag Calculator", "applicationCategory": "DesignApplication", "operatingSystem": "Web Browser", "url": "https://plumbsquare.github.io/tools/fence-post-picket-calculator.html", "description": "Free wood fence calculator for 4x4/6x6 posts, 2x4 rails, pickets, and post-hole concrete bags (80-lb, 60-lb, 50-lb).", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many bags of concrete do I need per 4x4 or 6x6 fence post?", "acceptedAnswer": {"@type": "Answer", "text": "For a standard 4×4 wood post (actual 3.5\" × 3.5\") set 24 to 30 inches deep in a 10-inch diameter auger hole, the net concrete volume after subtracting the buried wood post is approximately 0.90 to 1.15 cubic feet—which requires 2 bags of 80-lb concrete (0.60 cu ft/bag) or 2.5 bags of 60-lb concrete (0.45 cu ft/bag) per post."}}, {"@type": "Question", "name": "How deep should fence posts be buried?", "acceptedAnswer": {"@type": "Answer", "text": "The structural rule of thumb is to bury one-third to one-half of the above-ground fence height (plus 6 inches for a tamped gravel drainage base), or extend below the local winter frost line. A 6-foot privacy fence uses 8-foot 4×4 posts buried 24 to 30 inches deep; an 8-foot fence uses 10-foot or 12-foot 6×6 posts buried 36 inches deep."}}, {"@type": "Question", "name": "How do you calculate the number of fence pickets needed?", "acceptedAnswer": {"@type": "Answer", "text": "Convert total fence length to inches and divide by the sum of one picket's actual width plus your desired gap between pickets: Pickets = ceil( (Fence_Length_Ft × 12) ÷ (Picket_Width_in + Gap_in) ). For a tight edge-to-edge privacy fence using 5 1/2 inch dog-ear pickets with zero gap, divide total inches by 5.5."}}, {"@type": "Question", "name": "How many horizontal 2x4 rails are needed per fence section?", "acceptedAnswer": {"@type": "Answer", "text": "Fences up to 4 feet tall use 2 horizontal 2×4 rails per section (top and bottom). Standard 6-foot privacy fences require 3 rails per section to prevent pickets from warping, and 8-foot fences require 4 rails per section."}}, {"@type": "Question", "name": "What diameter hole should I dig for a fence post?", "acceptedAnswer": {"@type": "Answer", "text": "Auger hole diameter should be roughly three times the width of the post: use a 10-inch or 12-inch hole for a 4×4 post, and a 14-inch to 18-inch hole for a 6×6 corner or gate post."}}]}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="../index.html">
+      <span class="brand-icon">📐</span>
+      Plumb<span>Square</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html#calculators">Calculators</a></li>
+        <li><a href="../guides/index.html">Shop Guides</a></li>
+        <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Lumber Chart</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="unit-switch" role="group" aria-label="Measurement Unit System">
+      <button type="button" class="unit-btn active" data-unit="imperial">🇺🇸 Imperial (1/16")</button>
+      <button type="button" class="unit-btn" data-unit="metric">🌍 Metric (mm)</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#calculators">Calculators</a> › Fence Post & Picket Calculator</nav>
+  <div class="calc-workspace">
+    <div class="panel">
+      <div class="panel-title">🏡 Fence Run, Picket & Post Hole Inputs</div>
+      <div class="preset-bar">
+        <button type="button" class="preset-btn" onclick="setFencePreset(100, 6, 8, 5.5, 0, 3.5, 10, 30)">100-Ft Privacy Fence (6')</button>
+        <button type="button" class="preset-btn" onclick="setFencePreset(60, 4, 8, 3.5, 2.0, 3.5, 10, 24)">60-Ft Picket Fence (4')</button>
+        <button type="button" class="preset-btn" onclick="setFencePreset(150, 6, 8, 5.5, 0.25, 5.5, 12, 36)">150-Ft Heavy 6x6 Post Run</button>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="fenceLenFt">Total Fence Length <span class="unit-hint">feet</span></label>
+          <input type="number" id="fenceLenFt" value="100" min="4" max="2000" step="1" oninput="calcFence()">
+        </div>
+        <div class="field-group">
+          <label for="fenceHeightFt">Fence Height <span class="unit-hint">feet</span></label>
+          <select id="fenceHeightFt" onchange="calcFence()">
+            <option value="4">4 ft (2 Rails per Section)</option>
+            <option value="6" selected>6 ft Standard Privacy (3 Rails per Section)</option>
+            <option value="8">8 ft High Privacy (4 Rails per Section)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="postSpacingFt">Max Post Spacing <span class="unit-hint">feet (usually 8')</span></label>
+          <input type="number" id="postSpacingFt" value="8" min="4" max="12" step="0.5" oninput="calcFence()">
+        </div>
+        <div class="field-group">
+          <label for="postWidthIn">Post Size <span class="unit-hint">Actual in</span></label>
+          <select id="postWidthIn" onchange="calcFence()">
+            <option value="3.5" selected>4×4 Post (3 1/2" Actual)</option>
+            <option value="5.5">6×6 Post (5 1/2" Actual)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="picketWidthIn">Picket Actual Width <span class="unit-hint">inches</span></label>
+          <select id="picketWidthIn" onchange="calcFence()">
+            <option value="5.5" selected>5 1/2" (1×6 Dog-Ear Picket)</option>
+            <option value="3.5">3 1/2" (1×4 Picket)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="picketGapIn">Gap Between Pickets <span class="unit-hint">in (0 = Privacy)</span></label>
+          <input type="number" id="picketGapIn" value="0" min="0" max="6" step="0.125" oninput="calcFence()">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="holeDiaIn">Post Hole Diameter <span class="unit-hint">inches</span></label>
+          <input type="number" id="holeDiaIn" value="10" min="6" max="24" step="1" oninput="calcFence()">
+        </div>
+        <div class="field-group">
+          <label for="holeDepthIn">Post Bury Depth <span class="unit-hint">inches</span></label>
+          <input type="number" id="holeDepthIn" value="30" min="12" max="60" step="2" oninput="calcFence()">
+        </div>
+      </div>
+      <button type="button" class="btn-primary" onclick="calcFence()">Calculate Fence & Concrete Takeoff</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Fence Elevation Blueprint & Concrete Bag Schedule</span>
+        <span id="fenceBadge" style="font-size:0.82rem;color:#1d4ed8;font-family:monospace"></span>
+      </div>
+      <div id="fenceStatus" class="code-status pass"></div>
+      <div class="blueprint-card">
+        <div class="blueprint-header">
+          <span>FENCE SECTION & SUB-GRADE POST FOOTING DIAGRAM</span>
+          <span id="fenceConcreteReadout">CONCRETE: —</span>
+        </div>
+        <div class="svg-stage" id="fenceSvgBox"></div>
+      </div>
+      <div class="kpi-grid" id="fenceKpis"></div>
+      <div class="action-bar">
+        <button type="button" class="action-btn primary" onclick="PS.exportBlueprintPNG('Wood Fence & Concrete Takeoff')">📷 Download Fence Blueprint (PNG)</button>
+        <button type="button" class="action-btn" onclick="window.print()">🖨️ Print 1-Page Shop Sheet</button>
+        <button type="button" class="action-btn" onclick="PS.copyShareLink()">🔗 Share Project Link</button>
+      </div>
+      <h3 style="font-size:1.05rem;color:#0f1e36;margin-top:10px">Complete Fence Materials & Concrete Bag Shopping List</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="fenceTable">
+          <thead>
+            <tr><th>Material Item</th><th>Exact Net</th><th>Order Qty (+5% Waste)</th><th>Notes & Sizing</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <article class="guide-content">
+    <h1>Wood Fence Calculator – Posts, 2×4 Rails, Pickets & Post-Hole Concrete Bags</h1>
+    <p>Estimating a backyard wood privacy or picket fence requires accurate math for both above-ground lumber and below-ground concrete footings. Unlike basic estimators that guess concrete bags, this <strong>Wood Fence Calculator</strong> computes the exact cylindrical volume of your auger holes minus the displaced volume of the buried 4×4 or 6×6 wood posts, returning exact bag counts for <strong>80-lb, 60-lb, and 50-lb premix concrete bags</strong>.</p>
+    <figure style="margin:20px 0;text-align:center"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20760%20210%22%20width%3D%22760%22%20height%3D%22210%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22760%22%20height%3D%22210%22%20rx%3D%2210%22%20fill%3D%22%230f1e36%22/%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22rgba%2896%2C165%2C250%2C0.14%29%22%20stroke-width%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%2240%22%20x2%3D%22760%22%20y2%3D%2240%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22760%22%20y2%3D%2280%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%22120%22%20x2%3D%22760%22%20y2%3D%22120%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22760%22%20y2%3D%22160%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22120%22%20y1%3D%220%22%20x2%3D%22120%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22280%22%20y1%3D%220%22%20x2%3D%22280%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22440%22%20y1%3D%220%22%20x2%3D%22440%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22600%22%20y1%3D%220%22%20x2%3D%22600%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2220%22%20y%3D%2220%22%20width%3D%22720%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22none%22%20stroke%3D%22%2360a5fa%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%226%2C4%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2258%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2215%22%20font-weight%3D%22bold%22%3ETECHNICAL%20REFERENCE%20SPECIFICATION%20%C2%B7%20PLUMBSQUARE%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2292%22%20fill%3D%22%23ffffff%22%20font-family%3D%22sans-serif%22%20font-size%3D%2221%22%20font-weight%3D%22bold%22%3EFence%20Post%20Hole%20Concrete%20Volume%20Formula%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%22122%22%20fill%3D%22%2393c5fd%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%3ENet%20Hole%20Cu%20Ft%20%3D%20%28pi%20x%20Radius%5E2%20x%20Depth%20-%20Post_W%5E2%20x%20Depth%29%20/%201728%3C/text%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2242%22%20y%3D%22138%22%20width%3D%22676%22%20height%3D%2236%22%20rx%3D%225%22%20fill%3D%22%23172e5c%22%20stroke%3D%22%23fbbf24%22%20stroke-width%3D%221%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2256%22%20y%3D%22161%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%3E80-lb%20Bag%20%3D%200.60%20cu%20ft%20%20%7C%20%2060-lb%20Bag%20%3D%200.45%20cu%20ft%20%20%7C%20%2050-lb%20Bag%20%3D%200.375%20cu%20ft%3C/text%3E%0A%20%20%20%20%3C/svg%3E" alt="Fence Post Hole Concrete Volume Formula - Net Hole Cu Ft = (pi x Radius^2 x Depth - Post_W^2 x Depth) / 1728 diagram" width="760" height="210" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #d1d5db"><figcaption style="font-size:0.84rem;color:#4b5563;margin-top:6px">Figure 1: Architectural field layout reference for Fence Post Hole Concrete Volume Formula (Net Hole Cu Ft = (pi x Radius^2 x Depth - Post_W^2 x Depth) / 1728).</figcaption></figure>
+    <h2>1. Fence Post, Rail, Picket & Concrete Formulas</h2>
+    <div class="formula-box">
+      Fence Sections (Bays) = ceil( Total_Fence_Length_Ft ÷ Max_Post_Spacing_Ft )<br>
+      Total Fence Posts = Fence_Sections + 1<br>
+      Total 2×4 Rails = Fence_Sections × Rails_Per_Section (2 for 4', 3 for 6', 4 for 8')<br>
+      Total Pickets = ceil( (Total_Fence_Length_Ft × 12) ÷ (Picket_Width_in + Picket_Gap_in) )<br>
+      Net Concrete per Hole (ft³) = ( (π × (Hole_Dia/2)² × Depth) - (Post_W² × Depth) ) ÷ 1728
+    </div>
+    <h2>2. Concrete Bag Yield Reference Table</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Concrete Bag Size</th><th>Volume Yield per Bag</th><th>Bags for 10"×30" Hole (4×4 Post)</th><th>Bags for 12"×36" Hole (6×6 Post)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>80-lb Premix Concrete</strong></td><td class="mono">0.60 cu ft (17.0 L)</td><td class="mono">1.9 bags (buy 2)</td><td class="mono">3.0 bags</td></tr>
+          <tr><td><strong>60-lb Premix Concrete</strong></td><td class="mono">0.45 cu ft (12.7 L)</td><td class="mono">2.6 bags (buy 3)</td><td class="mono">4.0 bags</td></tr>
+          <tr><td><strong>50-lb Fast-Setting Mix</strong></td><td class="mono">0.375 cu ft (10.6 L)</td><td class="mono">3.1 bags</td><td class="mono">4.8 bags</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>3. Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details><summary>How many bags of concrete do I need per 4x4 or 6x6 fence post?</summary><p>For a standard 4×4 wood post (actual 3.5" × 3.5") set 24 to 30 inches deep in a 10-inch diameter auger hole, the net concrete volume after subtracting the buried wood post is approximately 0.90 to 1.15 cubic feet—which requires 2 bags of 80-lb concrete (0.60 cu ft/bag) or 2.5 bags of 60-lb concrete (0.45 cu ft/bag) per post.</p></details><details><summary>How deep should fence posts be buried?</summary><p>The structural rule of thumb is to bury one-third to one-half of the above-ground fence height (plus 6 inches for a tamped gravel drainage base), or extend below the local winter frost line. A 6-foot privacy fence uses 8-foot 4×4 posts buried 24 to 30 inches deep; an 8-foot fence uses 10-foot or 12-foot 6×6 posts buried 36 inches deep.</p></details><details><summary>How do you calculate the number of fence pickets needed?</summary><p>Convert total fence length to inches and divide by the sum of one picket's actual width plus your desired gap between pickets: Pickets = ceil( (Fence_Length_Ft × 12) ÷ (Picket_Width_in + Gap_in) ). For a tight edge-to-edge privacy fence using 5 1/2 inch dog-ear pickets with zero gap, divide total inches by 5.5.</p></details><details><summary>How many horizontal 2x4 rails are needed per fence section?</summary><p>Fences up to 4 feet tall use 2 horizontal 2×4 rails per section (top and bottom). Standard 6-foot privacy fences require 3 rails per section to prevent pickets from warping, and 8-foot fences require 4 rails per section.</p></details><details><summary>What diameter hole should I dig for a fence post?</summary><p>Auger hole diameter should be roughly three times the width of the post: use a 10-inch or 12-inch hole for a 4×4 post, and a 14-inch to 18-inch hole for a 6×6 corner or gate post.</p></details>
+    </div>
+    <div class="callout"><strong>🧰 Related Shop & Framing Calculators:</strong><ul style="margin-top:8px;margin-bottom:0"><li><a href="stair-stringer-calculator.html" style="font-weight:700;color:#1d4ed8">Stair Stringer & Rise/Run Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">IRC Code + 2D Stringer Cut Blueprint</span></li><li><a href="board-and-batten-calculator.html" style="font-weight:700;color:#1d4ed8">Board & Batten / Wainscoting Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">Equal Panel Width + Wall Elevation</span></li><li><a href="even-spacing-calculator.html" style="font-weight:700;color:#1d4ed8">Even Spacing & Baluster Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">1/16" On-Center + 4" Sphere Rule</span></li><li><a href="plywood-cut-list-optimizer.html" style="font-weight:700;color:#1d4ed8">Plywood Sheet & Cut-List Optimizer</a> — <span style="font-size:0.88rem;color:#4b5563">Kerf-Aware 2D Sheet Packing Map</span></li><li><a href="board-foot-calculator.html" style="font-weight:700;color:#1d4ed8">Hardwood Board Foot (BDFT) Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">4/4 to 16/4 Rough & S4S Lumber Tally</span></li></ul></div>
+    <div class="author-box">
+      <div class="author-avatar">PS</div>
+      <div>
+        <strong>Verified by PlumbSquare Exterior Carpentry Team</strong>
+        <p style="margin:4px 0 0;font-size:0.88rem;color:#4b5563">Concrete displacement formulas verified against standard Quikrete/Sakrete bag yields. Last updated October 2026.</p>
+      </div>
+    </div>
+  </article>
+</div>
+<script>
+function setFencePreset(len, h, sp, pw, gap, postW, dia, depth) {
+  document.getElementById('fenceLenFt').value = len;
+  document.getElementById('fenceHeightFt').value = h;
+  document.getElementById('postSpacingFt').value = sp;
+  document.getElementById('picketWidthIn').value = pw;
+  document.getElementById('picketGapIn').value = gap;
+  document.getElementById('postWidthIn').value = postW;
+  document.getElementById('holeDiaIn').value = dia;
+  document.getElementById('holeDepthIn').value = depth;
+  calcFence();
+}
+function calcFence() {
+  var lenFt = parseFloat(document.getElementById('fenceLenFt').value) || 100;
+  var hFt = parseInt(document.getElementById('fenceHeightFt').value, 10) || 6;
+  var maxSp = parseFloat(document.getElementById('postSpacingFt').value) || 8;
+  var postW = parseFloat(document.getElementById('postWidthIn').value) || 3.5;
+  var pickW = parseFloat(document.getElementById('picketWidthIn').value) || 5.5;
+  var pickGap = parseFloat(document.getElementById('picketGapIn').value) || 0;
+  var holeDia = parseFloat(document.getElementById('holeDiaIn').value) || 10;
+  var holeDepth = parseFloat(document.getElementById('holeDepthIn').value) || 30;
+
+  var sections = Math.max(1, Math.ceil(lenFt / maxSp));
+  var actualSpFt = lenFt / sections;
+  var posts = sections + 1;
+  var railsPerSec = hFt <= 4 ? 2 : (hFt <= 6 ? 3 : 4);
+  var totalRails = sections * railsPerSec;
+  var totalPickets = Math.ceil((lenFt * 12) / (pickW + pickGap));
+
+  var holeVolCuIn = Math.PI * Math.pow(holeDia / 2, 2) * holeDepth;
+  var postVolCuIn = postW * postW * holeDepth;
+  var netCuFtPerHole = Math.max(0.2, (holeVolCuIn - postVolCuIn) / 1728);
+  var totalCuFt = netCuFtPerHole * posts;
+  var bags80 = Math.ceil(totalCuFt / 0.60);
+  var bags60 = Math.ceil(totalCuFt / 0.45);
+  var bags50 = Math.ceil(totalCuFt / 0.375);
+  var postLenFt = Math.ceil((hFt * 12 + holeDepth) / 24) * 2;
+
+  document.getElementById('fenceBadge').textContent = sections + ' Sections · ' + posts + ' Posts · ' + totalPickets + ' Pickets';
+  document.getElementById('fenceConcreteReadout').textContent = netCuFtPerHole.toFixed(2) + ' CU FT / HOLE (' + bags80 + ' × 80-LB BAGS TOTAL)';
+  var statusEl = document.getElementById('fenceStatus');
+  statusEl.className = 'code-status pass';
+  statusEl.textContent = '✅ COMPLETE FENCE TAKEOFF: ' + posts + ' posts (' + postLenFt + ' ft length), ' + totalRails + ' horizontal 2×4 rails, ' + totalPickets + ' pickets, and ' + bags80 + ' bags (80-lb) of concrete.';
+
+  var kpiHtml = [
+    { l: 'Fence Posts (' + postLenFt + ' ft)', v: posts + ' Posts', s: sections + ' bays @ ' + actualSpFt.toFixed(2) + ' ft OC', h: true },
+    { l: 'Fence Pickets', v: Math.ceil(totalPickets * 1.05) + ' Pickets', s: totalPickets + ' net + 5% cull waste', h: true },
+    { l: '2×4 Horizontal Rails', v: totalRails + ' Rails', s: railsPerSec + ' rails per section' },
+    { l: 'Concrete (80-lb Bags)', v: bags80 + ' Bags', s: 'Or ' + bags60 + ' (60-lb) / ' + bags50 + ' (50-lb)' }
+  ].map(function(k) {
+    return '<div class="kpi-card' + (k.h ? ' highlight' : '') + '"><div class="kpi-label">' + k.l + '</div><div class="kpi-val">' + k.v + '</div><div class="kpi-sub">' + k.s + '</div></div>';
+  }).join('');
+  document.getElementById('fenceKpis').innerHTML = kpiHtml;
+
+  var svgW = 720, svgH = 235;
+  var svg = '<svg width="100%" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">' +
+    '<line x1="20" y1="150" x2="700" y2="150" stroke="#34d399" stroke-width="2" stroke-dasharray="6,4"/>' +
+    '<text x="30" y="168" fill="#34d399" font-family="monospace" font-size="11">FINISHED GRADE (GROUND LINE)</text>' +
+    '<rect x="115" y="150" width="38" height="65" rx="4" fill="rgba(148,163,184,0.45)" stroke="#93c5fd" stroke-width="1.5"/>' +
+    '<rect x="565" y="150" width="38" height="65" rx="4" fill="rgba(148,163,184,0.45)" stroke="#93c5fd" stroke-width="1.5"/>' +
+    '<rect x="126" y="30" width="16" height="178" fill="#d97706" stroke="#fbbf24" stroke-width="1.5"/>' +
+    '<rect x="576" y="30" width="16" height="178" fill="#d97706" stroke="#fbbf24" stroke-width="1.5"/>' +
+    '<rect x="142" y="48" width="434" height="8" fill="#60a5fa"/>' +
+    '<rect x="142" y="92" width="434" height="8" fill="#60a5fa"/>' +
+    '<rect x="142" y="134" width="434" height="8" fill="#60a5fa"/>';
+  for (var p = 0; p < 18; p++) {
+    var px = 146 + p * 24;
+    svg += '<rect x="' + px + '" y="34" width="' + (pickGap > 0 ? 17 : 22) + '" height="114" fill="rgba(251,191,36,0.34)" stroke="#fbbf24" stroke-width="1"/>';
+  }
+  svg += '<text x="360" y="225" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="12">BAY SPACING: ' + actualSpFt.toFixed(2) + ' ft OC · HOLE: ' + holeDia + '" DIA × ' + holeDepth + '" DEEP (' + netCuFtPerHole.toFixed(2) + ' FT³ CONCRETE)</text></svg>';
+  document.getElementById('fenceSvgBox').innerHTML = svg;
+
+  var tbody = [
+    ['Pressure-Treated Posts (' + (postW === 3.5 ? '4×4' : '6×6') + ' × ' + postLenFt + ' ft)', posts + ' pcs', posts + ' pcs', 'Bury ' + holeDepth + '" deep in ' + holeDia + '" auger holes'],
+    ['Horizontal Framing Rails (2×4 × 8 ft)', totalRails + ' pcs', Math.ceil(totalRails * 1.05) + ' pcs', railsPerSec + ' rails per bay (' + sections + ' bays total)'],
+    ['Vertical Fence Pickets (' + PS.toFraction(pickW) + ' wide × ' + hFt + ' ft)', totalPickets + ' pcs', Math.ceil(totalPickets * 1.05) + ' pcs', pickGap === 0 ? 'Tight edge-to-edge privacy install' : PS.toFraction(pickGap) + ' air gap between pickets'],
+    ['Premix Concrete (80-lb Bags)', bags80 + ' bags', bags80 + ' bags', totalCuFt.toFixed(1) + ' cu ft total (' + bags60 + ' × 60-lb or ' + bags50 + ' × 50-lb bags)'],
+    ['Exterior Ring-Shank Picket Nails / Screws', (totalPickets * railsPerSec * 2) + ' pcs', Math.ceil(totalPickets * railsPerSec * 2.1) + ' pcs', '2 hot-dipped galvanized or stainless fasteners per rail crossing']
+  ].map(function(r) {
+    return '<tr><td class="mono">' + r[0] + '</td><td class="mono">' + r[1] + '</td><td class="mono">' + r[2] + '</td><td>' + r[3] + '</td></tr>';
+  }).join('');
+  document.querySelector('#fenceTable tbody').innerHTML = tbody;
+}
+window.onPSUnitChange = calcFence;
+PS.loadUrlParams(); calcFence(); document.addEventListener('DOMContentLoaded', function() { PS.loadUrlParams(); calcFence(); });
+</script>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>📐 PlumbSquare Carpentry & Framing Lab</h4>
+        <p style="margin-bottom:12px">Precision browser-based layout calculators, 2D cut-list optimizers, and IRC code-checked blueprints for North American, UK, Canadian, and Australian builders, woodworkers, and DIY homeowners. 100% client-side, zero login required.</p>
+        <p style="font-size:0.82rem;color:#93c5fd">✓ Imperial Tape-Measure Fractions (1/16") &nbsp;·&nbsp; ✓ Metric (mm/cm) &nbsp;·&nbsp; ✓ Printable Shop Cut Sheets</p>
+      </div>
+      <div>
+        <h4>Layout Calculators</h4>
+        <ul>
+          <li><a href="../tools/stair-stringer-calculator.html">Stair Stringer Calculator</a></li>
+          <li><a href="../tools/board-and-batten-calculator.html">Board & Batten Layout</a></li>
+          <li><a href="../tools/even-spacing-calculator.html">Even Spacing & Balusters</a></li>
+          <li><a href="../tools/plywood-cut-list-optimizer.html">Plywood Cut Optimizer</a></li>
+          <li><a href="../tools/board-foot-calculator.html">Board Foot (BDFT) Tally</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Framing & Exterior</h4>
+        <ul>
+          <li><a href="../tools/wall-stud-framing-calculator.html">Wall Stud Framing (16/24 OC)</a></li>
+          <li><a href="../tools/deck-board-joist-calculator.html">Deck Board & Joist Estimator</a></li>
+          <li><a href="../tools/fence-post-picket-calculator.html">Fence Post & Concrete Bags</a></li>
+          <li><a href="../tools/crown-molding-miter-calculator.html">Crown Molding Miter Angles</a></li>
+          <li><a href="../tools/cabinet-shelf-sag-calculator.html">Cabinet Shelf Sag Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reference & Legal</h4>
+        <ul>
+          <li><a href="../guides/index.html">All Carpentry Guides</a></li>
+          <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Nominal vs Actual Sizes</a></li>
+          <li><a href="../guides/irc-stair-building-code-guide.html">IRC Stair Code Guide</a></li>
+          <li><a href="../about.html">About & Methodology</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Building Code Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PlumbSquare — Precision Woodworking & Construction Utilities. All calculations run locally in your browser.</span>
+      <span>Verify all structural dimensions against local municipal building codes before cutting lumber.</span>
+    </div>
+  </div>
+</footer>
+<script defer src="../assets/app.js?v=2"></script>
+</body>
+</html>

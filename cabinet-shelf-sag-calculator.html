@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shelf Sag Calculator – Bookshelf & Cabinet Span Deflection Tool | PlumbSquare</title>
+<meta name="description" content="Calculate bookshelf and cabinet shelf sag in inches and millimeters for plywood, MDF, oak, maple, and walnut spans with hardwood edging stiffeners.">
+<meta name="author" content="PlumbSquare Engineering & Carpentry Lab">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://plumbsquare.github.io/tools/cabinet-shelf-sag-calculator.html">
+<meta property="og:title" content="Shelf Sag Calculator – Bookshelf & Cabinet Span Deflection Tool | PlumbSquare">
+<meta property="og:description" content="Calculate bookshelf and cabinet shelf sag in inches and millimeters for plywood, MDF, oak, maple, and walnut spans with hardwood edging stiffeners.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumbsquare.github.io/tools/cabinet-shelf-sag-calculator.html">
+<meta property="og:image" content="https://plumbsquare.github.io/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="512x512" href="../images/logo.png">
+<link rel="apple-touch-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../assets/style.css?v=2">
+<style id="ps-inline-css">
+/* ==========================================================================
+   PlumbSquare — Precision Carpentry, Framing & Woodworking Calculators
+   Design System: Workshop Slate + Blueprint Navy + Cedar Amber
+   100% Mobile-Responsive (Zero Horizontal Overflow), Print-Ready (@media print)
+   ========================================================================== */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-alt: #edf1f7;
+  --blueprint-bg: #0f1e36;
+  --blueprint-grid: rgba(120, 175, 255, 0.12);
+  --blueprint-line: #60a5fa;
+  --blueprint-accent: #fbbf24;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --primary: #1d4ed8;
+  --primary-dark: #1e3a8a;
+  --accent: #d97706;
+  --accent-light: #fef3c7;
+  --success: #047857;
+  --success-bg: #ecfdf5;
+  --ok: #047857;
+  --ok-bg: #ecfdf5;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --border: #d1d5db;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(15, 30, 54, 0.07);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header & Navigation */
+.site-header {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #111827;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.brand span {
+  color: var(--blueprint-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--blueprint-accent);
+}
+
+/* Global Unit Toggle Pill */
+.unit-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.unit-btn {
+  background: transparent;
+  color: #d1d5db;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.unit-btn.active {
+  background: var(--blueprint-accent);
+  color: #111827;
+}
+
+@media (max-width: 680px) {
+  .nav-bar {
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .nav-bar nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .nav-links {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .unit-btn {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 14px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0f1e36 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 34px 24px;
+  border-radius: var(--radius);
+  margin: 16px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #0f1e36 0%, #172e5c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+}
+
+.hero-badge,
+.hero-tag {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--blueprint-accent);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  line-height: 1.22;
+  font-weight: 800;
+  margin-bottom: 12px;
+  max-width: 820px;
+}
+
+.hero h1 span {
+  color: var(--blueprint-accent);
+}
+
+.hero p {
+  color: #d1d5db;
+  font-size: 1.02rem;
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+
+.hero-badges,
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.trust-pill,
+.hero-stat {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f3f4f6;
+}
+
+.hero-stat strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--blueprint-accent);
+}
+
+.hero-stat span {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin: 18px 0 6px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tool Layout Grid — minmax(0, ...) prevents grid children from causing horizontal overflow */
+.calc-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 22px;
+  margin: 14px 0 28px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .calc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 15px 14px;
+  }
+}
+
+.panel-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+/* Preset Pills */
+.preset-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.preset-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.preset-btn:hover {
+  background: #dbeafe;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Form Controls */
+.field-group {
+  margin-bottom: 13px;
+  min-width: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+label,
+.field-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+label .unit-hint {
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.input-row {
+  width: 100%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.96rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.field-help {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+/* Blueprint Diagram Box */
+.blueprint-card {
+  background: var(--blueprint-bg);
+  border-radius: 10px;
+  padding: 14px;
+  color: #fff;
+  margin-bottom: 16px;
+  border: 1px solid #1e3a8a;
+  max-width: 100%;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.blueprint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #93c5fd;
+  font-family: var(--font-mono);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+.svg-stage {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.svg-stage svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* KPI Result Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.kpi-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.kpi-card.highlight {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.kpi-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.kpi-val {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  font-family: var(--font-mono);
+  line-height: 1.25;
+}
+
+.kpi-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Code Compliance Status Banner */
+.code-status {
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.code-status.pass {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+
+.code-status.warn {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* Action Toolbar (PNG Export, Print, Share Link) */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.action-btn,
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.action-btn.primary,
+.btn-action.primary {
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-color: var(--blueprint-bg);
+}
+
+.action-btn:hover,
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Data Tables & Cut Lists */
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+table.data-table th {
+  background: var(--blueprint-bg);
+  color: #fff;
+  padding: 9px 10px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table.data-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+table.data-table tr:nth-child(even) td {
+  background: var(--surface-alt);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* Cards Grid for Homepage */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 18px 0 36px;
+  width: 100%;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+}
+
+.tool-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.tool-card h3 {
+  font-size: 1.15rem;
+  color: var(--blueprint-bg);
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tool-card-link {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Technical Guide Article Styling */
+article.guide-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 22px 0;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  article.guide-content {
+    padding: 18px 14px;
+  }
+}
+
+article.guide-content h1 {
+  font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+  color: var(--blueprint-bg);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+article.guide-content h2 {
+  font-size: clamp(1.18rem, 2.8vw, 1.4rem);
+  color: var(--blueprint-bg);
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+article.guide-content h3 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin: 18px 0 8px;
+}
+
+article.guide-content p,
+article.guide-content li {
+  margin-bottom: 12px;
+  color: #1f2937;
+  overflow-wrap: break-word;
+}
+
+article.guide-content ul,
+article.guide-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.formula-box {
+  background: #0f1e36;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-left: 4px solid var(--accent);
+}
+
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 13px 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.faq-list details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.faq-list summary {
+  font-weight: 700;
+  color: var(--blueprint-bg);
+  cursor: pointer;
+}
+
+.faq-list details p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+}
+
+.author-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blueprint-bg);
+  color: var(--blueprint-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #9ca3af;
+  padding: 36px 0 28px;
+  margin-top: 48px;
+  font-size: 0.88rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 0.96rem;
+}
+
+.site-footer ul {
+  list-style: none;
+}
+
+.site-footer li {
+  margin-bottom: 7px;
+}
+
+.site-footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Toast Notification */
+.ps-toast {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  left: 18px;
+  max-width: 360px;
+  margin-left: auto;
+  background: #0f1e36;
+  color: #fff;
+  border: 1px solid var(--blueprint-accent);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Print Stylesheet (@media print) */
+@media print {
+  .site-header,
+  .site-footer,
+  .preset-bar,
+  .action-bar,
+  .breadcrumb,
+  article.guide-content {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .calc-workspace {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+
+/* Rock-Solid Mobile Viewport Lock (320px - 960px) */
+html, body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  position: relative;
+}
+.site-header, .site-footer, .container, .calc-workspace, .panel, .field-group, .field-row, .blueprint-card, .svg-stage, .table-wrap, article.guide-content {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+select, input[type="number"], input[type="text"], input[type="email"], textarea {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-overflow: ellipsis;
+}
+@media (max-width: 960px) {
+  .calc-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .calc-workspace > .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 680px) {
+  .nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .nav-bar .brand {
+    justify-content: space-between;
+  }
+  .nav-bar nav {
+    order: 2 !important;
+    width: 100% !important;
+    overflow-x: visible !important;
+  }
+  .nav-links {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px 12px !important;
+  }
+  .unit-switch {
+    order: 3 !important;
+    align-self: flex-start !important;
+  }
+}
+
+</style>
+<script id="ps-inline-js">
+/*!
+ * PlumbSquare — Core Carpentry Math, Fractional Tape-Measure Engine,
+ * URL Permalink State, and Jobsite Blueprint PNG Exporter (assets/app.js)
+ * 100% Client-Side, Zero External Dependencies.
+ */
+(function () {
+  "use strict";
+
+  function gcd(a, b) {
+    a = Math.abs(Math.round(a));
+    b = Math.abs(Math.round(b));
+    while (b) {
+      var t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  var PS = {
+    unitMode: localStorage.getItem("ps_unit_mode") || "imperial", // 'imperial' | 'metric'
+
+    /* Convert decimal inches to nearest 1/16" (or 1/32") tape-measure string */
+    toFraction: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      var neg = inches < 0 ? "-" : "";
+      var val = Math.abs(inches);
+      var whole = Math.floor(val + 1e-9);
+      var rem = val - whole;
+      var num = Math.round(rem * denom);
+      if (num === denom) {
+        whole += 1;
+        num = 0;
+      }
+      if (num === 0) return neg + whole + '"';
+      var g = gcd(num, denom);
+      var n = num / g;
+      var d = denom / g;
+      return neg + (whole > 0 ? whole + " " : "") + n + "/" + d + '"';
+    },
+
+    /* Convert decimal inches to Feet + Fractional Inches: e.g. 14' 6 3/16" */
+    toFeetInches: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        return (mm / 1000).toFixed(2) + " m (" + Math.round(mm) + " mm)";
+      }
+      var totalSixteenths = Math.round(Math.abs(inches) * denom);
+      var totalIn = totalSixteenths / denom;
+      var ft = Math.floor(totalIn / 12 + 1e-9);
+      var remIn = totalIn - ft * 12;
+      if (ft === 0) return PS.toFraction(remIn, denom);
+      return ft + "' " + PS.toFraction(remIn, denom);
+    },
+
+    /* Format a length (stored internally in inches) according to active unit mode */
+    fmtLen: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        if (Math.abs(mm) >= 1000) {
+          return (mm / 1000).toFixed(3) + " m (" + Math.round(mm) + " mm)";
+        }
+        return Math.round(mm) + " mm";
+      }
+      return PS.toFraction(inches, denom || 16);
+    },
+
+    /* Format dual output: e.g., 14 3/16" (360 mm) */
+    fmtDual: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      var frac = PS.toFraction(inches, denom || 16);
+      var mm = Math.round(inches * 25.4);
+      return PS.unitMode === "metric"
+        ? mm + " mm (" + frac + ")"
+        : frac + " (" + mm + " mm)";
+    },
+
+    /* Parse user input string that may be decimal ("14.375") or fraction ("14 3/8") */
+    parseFrac: function (str) {
+      if (typeof str === "number") return str;
+      str = String(str || "").trim().replace(/"|in|mm|cm/gi, "").trim();
+      if (!str) return 0;
+      var parts = str.split(/\s+/);
+      if (parts.length === 2 && parts[1].indexOf("/") > -1) {
+        var whole = parseFloat(parts[0]) || 0;
+        var f = parts[1].split("/");
+        var frac = (parseFloat(f[0]) || 0) / (parseFloat(f[1]) || 1);
+        return whole >= 0 ? whole + frac : whole - frac;
+      }
+      if (str.indexOf("/") > -1) {
+        var f2 = str.split("/");
+        return (parseFloat(f2[0]) || 0) / (parseFloat(f2[1]) || 1);
+      }
+      return parseFloat(str) || 0;
+    },
+
+    /* Toast notification */
+    toast: function (msg) {
+      var old = document.querySelector(".ps-toast");
+      if (old) old.remove();
+      var el = document.createElement("div");
+      el.className = "ps-toast";
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () {
+        if (el.parentNode) el.remove();
+      }, 2800);
+    },
+
+    /* Switch global unit mode */
+    setUnitMode: function (mode) {
+      PS.unitMode = mode === "metric" ? "metric" : "imperial";
+      try {
+        localStorage.setItem("ps_unit_mode", PS.unitMode);
+      } catch (e) {}
+      document.querySelectorAll(".unit-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-unit") === PS.unitMode);
+      });
+      if (typeof window.onPSUnitChange === "function") {
+        window.onPSUnitChange(PS.unitMode);
+      }
+    },
+
+    /* Load URL query parameters into form inputs (#id) */
+    loadUrlParams: function () {
+      var params = new URLSearchParams(window.location.search);
+      var loaded = false;
+      params.forEach(function (val, key) {
+        if (key === "unit" && (val === "imperial" || val === "metric")) {
+          PS.unitMode = val;
+          return;
+        }
+        var el = document.getElementById(key);
+        if (el && (el.tagName === "INPUT" || el.tagName === "SELECT")) {
+          if (el.type === "checkbox") el.checked = val === "1" || val === "true";
+          else el.value = val;
+          loaded = true;
+        }
+      });
+      return loaded;
+    },
+
+    /* Copy shareable permalink with current calculator inputs */
+    copyShareLink: function () {
+      var params = new URLSearchParams();
+      params.set("unit", PS.unitMode);
+      document.querySelectorAll(".calc-workspace input, .calc-workspace select").forEach(function (el) {
+        if (!el.id) return;
+        if (el.type === "checkbox") params.set(el.id, el.checked ? "1" : "0");
+        else if (el.value !== "") params.set(el.id, el.value);
+      });
+      var url = window.location.origin + window.location.pathname + "?" + params.toString();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          PS.toast("✅ Shareable project link copied to clipboard!");
+        });
+      } else {
+        window.prompt("Copy your project link:", url);
+      }
+    },
+
+    /* Render current SVG diagram + KPIs + Cut List into a high-res PNG shop card */
+    exportBlueprintPNG: function (toolTitle) {
+      var svgEl = document.querySelector(".svg-stage svg");
+      var kpis = [];
+      document.querySelectorAll(".kpi-card").forEach(function (c) {
+        var lbl = c.querySelector(".kpi-label");
+        var val = c.querySelector(".kpi-val");
+        var sub = c.querySelector(".kpi-sub");
+        if (lbl && val) {
+          kpis.push({
+            label: lbl.textContent.trim(),
+            value: val.textContent.trim(),
+            sub: sub ? sub.textContent.trim() : ""
+          });
+        }
+      });
+
+      var rows = [];
+      var table = document.querySelector(".calc-workspace table.data-table");
+      if (table) {
+        table.querySelectorAll("tr").forEach(function (tr, idx) {
+          if (idx > 10) return;
+          var cells = [];
+          tr.querySelectorAll("th, td").forEach(function (td) {
+            cells.push(td.textContent.trim());
+          });
+          if (cells.length) rows.push(cells);
+        });
+      }
+
+      var canvas = document.createElement("canvas");
+      var W = 1200;
+      var tableH = rows.length ? 48 + rows.length * 34 : 0;
+      var H = 640 + tableH;
+      canvas.width = W;
+      canvas.height = H;
+      var ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#0f1e36";
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle Blueprint Grid
+      ctx.strokeStyle = "rgba(96, 165, 250, 0.12)";
+      ctx.lineWidth = 1;
+      for (var gx = 0; gx < W; gx += 25) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+      }
+      for (var gy = 0; gy < H; gy += 25) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+
+      // Header Banner
+      ctx.fillStyle = "#172e5c";
+      ctx.fillRect(0, 0, W, 78);
+      ctx.fillStyle = "#fbbf24";
+      ctx.fillRect(0, 75, W, 3);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
+      ctx.fillText("PLUMBSQUARE · JOBSITE CUT & LAYOUT SHEET", 32, 48);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(toolTitle || document.title.split("–")[0].trim(), W - 32, 48);
+      ctx.textAlign = "left";
+
+      // Draw KPI boxes on the left
+      var kx = 32, ky = 104;
+      kpis.slice(0, 6).forEach(function (k, idx) {
+        var col = idx % 2;
+        var row = Math.floor(idx / 2);
+        var bx = kx + col * 220;
+        var by = ky + row * 94;
+        ctx.fillStyle = "rgba(255,255,255,0.07)";
+        ctx.strokeStyle = "rgba(147,197,253,0.35)";
+        ctx.lineWidth = 1.5;
+        ctx.fillRect(bx, by, 206, 82);
+        ctx.strokeRect(bx, by, 206, 82);
+
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "bold 12px system-ui, sans-serif";
+        ctx.fillText(k.label.toUpperCase().slice(0, 26), bx + 12, by + 24);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px monospace";
+        ctx.fillText(k.value.slice(0, 16), bx + 12, by + 52);
+
+        if (k.sub) {
+          ctx.fillStyle = "#d1d5db";
+          ctx.font = "11px system-ui, sans-serif";
+          ctx.fillText(k.sub.slice(0, 28), bx + 12, by + 71);
+        }
+      });
+
+      function finishAndDownload() {
+        // Draw table if present
+        if (rows.length) {
+          var ty = 420;
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "bold 16px system-ui, sans-serif";
+          ctx.fillText("TAPE-MEASURE HOOK MARKS / CUT SCHEDULE", 32, ty - 12);
+          var colW = Math.floor((W - 64) / (rows[0].length || 1));
+          rows.forEach(function (r, rIdx) {
+            var ry = ty + rIdx * 32;
+            ctx.fillStyle = rIdx === 0 ? "#1e3a8a" : (rIdx % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.1)");
+            ctx.fillRect(32, ry, W - 64, 30);
+            ctx.fillStyle = rIdx === 0 ? "#fbbf24" : "#f3f4f6";
+            ctx.font = (rIdx === 0 ? "bold 13px " : "13px ") + "monospace";
+            r.forEach(function (cell, cIdx) {
+              ctx.fillText(String(cell).slice(0, 28), 44 + cIdx * colW, ry + 20);
+            });
+          });
+        }
+
+        // Footer
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "13px system-ui, sans-serif";
+        ctx.fillText("Generated free on PlumbSquare · Verify all measurements on-site before cutting lumber.", 32, H - 18);
+
+        var a = document.createElement("a");
+        var slug = (location.pathname.split("/").pop() || "blueprint").replace(/\.html$/, "");
+        a.download = "plumbsquare-" + slug + "-plan.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+        PS.toast("📷 Jobsite Blueprint PNG downloaded!");
+      }
+
+      if (svgEl) {
+        var xml = new XMLSerializer().serializeToString(svgEl);
+        var svg64 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
+        var img = new Image();
+        img.onload = function () {
+          ctx.drawImage(img, 485, 100, 680, 290);
+          finishAndDownload();
+        };
+        img.onerror = finishAndDownload;
+        img.src = svg64;
+      } else {
+        finishAndDownload();
+      }
+    }
+  };
+
+  window.PS = PS;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".unit-btn").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-unit") === PS.unitMode);
+      btn.addEventListener("click", function () {
+        PS.setUnitMode(btn.getAttribute("data-unit"));
+      });
+    });
+  });
+})();
+
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Bookshelf & Cabinet Span Sag Calculator", "applicationCategory": "DesignApplication", "operatingSystem": "Web Browser", "url": "https://plumbsquare.github.io/tools/cabinet-shelf-sag-calculator.html", "description": "Free bookshelf and cabinet shelf sag deflection calculator for plywood, MDF, red oak, walnut, and hard maple with front nosing stiffener analysis.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the maximum acceptable sag for a bookshelf or cabinet shelf?", "acceptedAnswer": {"@type": "Answer", "text": "Structural and fine-woodworking standards limit visible shelf deflection to 0.02 inches per linear foot of span (1/50th of an inch per foot, or L/600). On a standard 36-inch (3-foot) bookcase shelf, total center sag should stay under 0.06 inches (roughly 1/16 inch or 1.5 mm) so the human eye never perceives a bow."}}, {"@type": "Question", "name": "How much weight do books put on a bookshelf?", "acceptedAnswer": {"@type": "Answer", "text": "Hardcover art books, textbooks, and encyclopedias weigh between 20 and 28 pounds per linear foot (30 to 42 kg/m). Standard trade paperbacks and mixed novels average 15 to 18 pounds per linear foot, while kitchen dishes and pantry cans average 15 to 25 pounds per linear foot."}}, {"@type": "Question", "name": "How does shelf thickness affect bending stiffness?", "acceptedAnswer": {"@type": "Answer", "text": "In Euler-Bernoulli beam mechanics, the area moment of inertia is I = (Width × Thickness³) ÷ 12. Because thickness is cubed, increasing a shelf from 1/2 inch to 3/4 inch (a 1.5× increase in thickness) increases stiffness by 1.5³ = 3.375× (reducing sag by more than 70%)!"}}, {"@type": "Question", "name": "Why does adding a 1x2 solid hardwood nosing strip reduce plywood shelf sag so dramatically?", "acceptedAnswer": {"@type": "Answer", "text": "Gluing a 3/4\" × 1 1/2\" solid oak or maple front edging strip onto a 3/4\" plywood shelf creates an inverted L-beam along the front edge, dropping the neutral axis and cutting center deflection by 45% to 65% while hiding the plywood plies."}}, {"@type": "Question", "name": "Why does MDF sag more than plywood or solid red oak?", "acceptedAnswer": {"@type": "Answer", "text": "3/4\" MDF has a Modulus of Elasticity (MOE) of roughly 400,000 psi and exhibits significant long-term creep under continuous load, whereas Baltic Birch plywood (~1,200,000 psi) and solid Red Oak or Hard Maple (~1,800,000 psi) are 3 to 4.5 times stiffer."}}]}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="../index.html">
+      <span class="brand-icon">📐</span>
+      Plumb<span>Square</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html#calculators">Calculators</a></li>
+        <li><a href="../guides/index.html">Shop Guides</a></li>
+        <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Lumber Chart</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="unit-switch" role="group" aria-label="Measurement Unit System">
+      <button type="button" class="unit-btn active" data-unit="imperial">🇺🇸 Imperial (1/16")</button>
+      <button type="button" class="unit-btn" data-unit="metric">🌍 Metric (mm)</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#calculators">Calculators</a> › Bookshelf & Cabinet Sag Calculator</nav>
+  <div class="calc-workspace">
+    <div class="panel">
+      <div class="panel-title">📚 Shelf Material, Span & Load Inputs</div>
+      <div class="preset-bar">
+        <button type="button" class="preset-btn" onclick="setSagPreset(1200000, 36, 10, 0.75, 75, 1.5)">36" Plywood + 1.5" Nosing</button>
+        <button type="button" class="preset-btn" onclick="setSagPreset(400000, 36, 11.25, 0.75, 75, 0.75)">36" Bare MDF Shelf (Sags!)</button>
+        <button type="button" class="preset-btn" onclick="setSagPreset(1820000, 42, 11.25, 1.0, 90, 1.0)">42" Solid Hard Maple (4/4)</button>
+      </div>
+      <div class="field-group">
+        <label for="shelfMat">Shelf Material (Modulus of Elasticity E)</label>
+        <select id="shelfMat" onchange="calcSag()">
+          <option value="1200000" selected>Birch / Maple Hardwood Plywood (E = 1,200,000 psi)</option>
+          <option value="1500000">Douglas Fir Structural Plywood (E = 1,500,000 psi)</option>
+          <option value="1820000">Solid Red Oak / White Oak / Hard Maple (E = 1,820,000 psi)</option>
+          <option value="1680000">Solid Black Walnut / Cherry (E = 1,680,000 psi)</option>
+          <option value="1230000">Solid Eastern White Pine / Poplar (E = 1,230,000 psi)</option>
+          <option value="400000">Medium Density Fiberboard — MDF (E = 400,000 psi)</option>
+          <option value="350000">Melamine / Particleboard (E = 350,000 psi)</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="shelfSpan">Unsupported Span Length <span class="unit-hint">inches</span></label>
+          <input type="number" id="shelfSpan" value="36" min="8" max="120" step="0.5" oninput="calcSag()">
+        </div>
+        <div class="field-group">
+          <label for="shelfDepth">Shelf Depth (Front-to-Back) <span class="unit-hint">inches</span></label>
+          <input type="number" id="shelfDepth" value="10" min="4" max="36" step="0.25" oninput="calcSag()">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="shelfThick">Shelf Thickness <span class="unit-hint">inches</span></label>
+          <select id="shelfThick" onchange="calcSag()">
+            <option value="0.5">1/2" (0.500 in / 12 mm)</option>
+            <option value="0.71875">23/32" Cabinet Plywood (0.719 in / 18 mm)</option>
+            <option value="0.75" selected>3/4" True S4S / MDF (0.750 in / 19 mm)</option>
+            <option value="1.0">1" (5/4 Surfaced / 25.4 mm)</option>
+            <option value="1.5">1 1/2" (2x Stock / Torsion Box)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="edgingDrop">Hardwood Front Nosing Depth <span class="unit-hint">inches</span></label>
+          <select id="edgingDrop" onchange="calcSag()">
+            <option value="0.75">Flush Edge Banding Only (No Drop)</option>
+            <option value="1.5" selected>1×2 Hardwood Stiffener Lip (1 1/2" Tall)</option>
+            <option value="2.5">1×3 Heavy Apron Rail (2 1/2" Tall)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-group">
+        <label for="shelfLoadLbs">Total Uniform Load on Shelf <span class="unit-hint">lbs (25 lbs/ft = 75 lbs on 3')</span></label>
+        <input type="number" id="shelfLoadLbs" value="75" min="5" max="1000" step="5" oninput="calcSag()">
+      </div>
+      <button type="button" class="btn-primary" onclick="calcSag()">Calculate Shelf Deflection</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Beam Deflection Curve & L/600 Visibility Check</span>
+        <span id="sagBadge" style="font-size:0.82rem;color:#1d4ed8;font-family:monospace"></span>
+      </div>
+      <div id="sagStatus" class="code-status pass"></div>
+      <div class="blueprint-card">
+        <div class="blueprint-header">
+          <span>EXAGGERATED BEAM DEFLECTION PROFILE (UNIFORM LOAD)</span>
+          <span id="sagReadout">SAG: —</span>
+        </div>
+        <div class="svg-stage" id="sagSvgBox"></div>
+      </div>
+      <div class="kpi-grid" id="sagKpis"></div>
+      <div class="action-bar">
+        <button type="button" class="action-btn primary" onclick="PS.exportBlueprintPNG('Bookshelf Sag & Span Analysis')">📷 Download Span Report (PNG)</button>
+        <button type="button" class="action-btn" onclick="window.print()">🖨️ Print 1-Page Shop Sheet</button>
+        <button type="button" class="action-btn" onclick="PS.copyShareLink()">🔗 Share Project Link</button>
+      </div>
+      <h3 style="font-size:1.05rem;color:#0f1e36;margin-top:10px">Span Comparison Table (Same Material & Load Across Spans)</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="sagTable">
+          <thead>
+            <tr><th>Shelf Span</th><th>Center Sag (in)</th><th>Center Sag (mm)</th><th>Max Allowed (0.02"/ft)</th><th>Verdict</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <article class="guide-content">
+    <h1>Bookshelf & Cabinet Span Sag Calculator (Beam Deflection & Stiffener Lip Tool)</h1>
+    <p>Nothing ruins custom built-in bookcases or pantry cabinetry faster than shelves that bow into a permanent smile after a few months of holding hardcover books. This <strong>Cabinet & Bookshelf Sag Calculator</strong> applies the classical Euler-Bernoulli uniform-load beam deflection equation together with composite moment-of-inertia stiffener math for solid hardwood front nosing strips.</p>
+    <figure style="margin:20px 0;text-align:center"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20760%20210%22%20width%3D%22760%22%20height%3D%22210%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22760%22%20height%3D%22210%22%20rx%3D%2210%22%20fill%3D%22%230f1e36%22/%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22rgba%2896%2C165%2C250%2C0.14%29%22%20stroke-width%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%2240%22%20x2%3D%22760%22%20y2%3D%2240%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22760%22%20y2%3D%2280%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%22120%22%20x2%3D%22760%22%20y2%3D%22120%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22760%22%20y2%3D%22160%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22120%22%20y1%3D%220%22%20x2%3D%22120%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22280%22%20y1%3D%220%22%20x2%3D%22280%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22440%22%20y1%3D%220%22%20x2%3D%22440%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22600%22%20y1%3D%220%22%20x2%3D%22600%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2220%22%20y%3D%2220%22%20width%3D%22720%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22none%22%20stroke%3D%22%2360a5fa%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%226%2C4%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2258%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2215%22%20font-weight%3D%22bold%22%3ETECHNICAL%20REFERENCE%20SPECIFICATION%20%C2%B7%20PLUMBSQUARE%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2292%22%20fill%3D%22%23ffffff%22%20font-family%3D%22sans-serif%22%20font-size%3D%2221%22%20font-weight%3D%22bold%22%3EEuler-Bernoulli%20Shelf%20Beam%20Deflection%20Formula%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%22122%22%20fill%3D%22%2393c5fd%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%3EMax%20Allowed%20Sag%20%3D%200.02%20in%20per%20Linear%20Foot%20of%20Span%20%280.06%20in%20on%20a%2036-inch%20Shelf%29%3C/text%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2242%22%20y%3D%22138%22%20width%3D%22676%22%20height%3D%2236%22%20rx%3D%225%22%20fill%3D%22%23172e5c%22%20stroke%3D%22%23fbbf24%22%20stroke-width%3D%221%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2256%22%20y%3D%22161%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%3EDelta%20%3D%20%28%205%20x%20Load_lbs%20x%20Span%5E3%20%29%20/%20%28%20384%20x%20E_psi%20x%20Moment_of_Inertia_I%20%29%3C/text%3E%0A%20%20%20%20%3C/svg%3E" alt="Euler-Bernoulli Shelf Beam Deflection Formula - Max Allowed Sag = 0.02 in per Linear Foot of Span (0.06 in on a 36-inch Shelf) diagram" width="760" height="210" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #d1d5db"><figcaption style="font-size:0.84rem;color:#4b5563;margin-top:6px">Figure 1: Architectural field layout reference for Euler-Bernoulli Shelf Beam Deflection Formula (Max Allowed Sag = 0.02 in per Linear Foot of Span (0.06 in on a 36-inch Shelf)).</figcaption></figure>
+    <h2>1. The Engineering Formula Behind Shelf Deflection</h2>
+    <div class="formula-box">
+      Moment of Inertia (Flat Shelf):   I = ( Shelf_Depth × Thickness³ ) ÷ 12<br>
+      Center Deflection (Uniform Load): Δ = ( 5 × W × L³ ) ÷ ( 384 × E × I )<br>
+      Center Deflection (Point Load):   Δ_point = ( W × L³ ) ÷ ( 48 × E × I )<br>
+      Invisible Sag Limit (L/600):      Δ_max = ( Span_in ÷ 12 ) × 0.020 inches
+    </div>
+    <h2>2. Wood & Sheet Material Stiffness (Modulus of Elasticity E)</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Shelf Material</th><th>Elastic Modulus (E)</th><th>Max 3/4" Bare Span (25 lb/ft)</th><th>With 1×2 Oak Front Lip</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Solid Red / White Oak / Hard Maple</strong></td><td class="mono">1,820,000 psi</td><td class="mono">36" – 38"</td><td class="mono">46" – 48"</td></tr>
+          <tr><td><strong>Solid Walnut / Cherry</strong></td><td class="mono">1,680,000 psi</td><td class="mono">34" – 36"</td><td class="mono">44" – 46"</td></tr>
+          <tr><td><strong>3/4" Birch / Maple Plywood</strong></td><td class="mono">1,200,000 psi</td><td class="mono">30" – 32"</td><td class="mono">38" – 42"</td></tr>
+          <tr><td><strong>3/4" MDF Panel</strong></td><td class="mono">400,000 psi</td><td class="mono">22" – 24"</td><td class="mono">32" – 34"</td></tr>
+          <tr><td><strong>3/4" Melamine / Particleboard</strong></td><td class="mono">350,000 psi</td><td class="mono">20" – 22"</td><td class="mono">30" – 32"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>3. Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details><summary>What is the maximum acceptable sag for a bookshelf or cabinet shelf?</summary><p>Structural and fine-woodworking standards limit visible shelf deflection to 0.02 inches per linear foot of span (1/50th of an inch per foot, or L/600). On a standard 36-inch (3-foot) bookcase shelf, total center sag should stay under 0.06 inches (roughly 1/16 inch or 1.5 mm) so the human eye never perceives a bow.</p></details><details><summary>How much weight do books put on a bookshelf?</summary><p>Hardcover art books, textbooks, and encyclopedias weigh between 20 and 28 pounds per linear foot (30 to 42 kg/m). Standard trade paperbacks and mixed novels average 15 to 18 pounds per linear foot, while kitchen dishes and pantry cans average 15 to 25 pounds per linear foot.</p></details><details><summary>How does shelf thickness affect bending stiffness?</summary><p>In Euler-Bernoulli beam mechanics, the area moment of inertia is I = (Width × Thickness³) ÷ 12. Because thickness is cubed, increasing a shelf from 1/2 inch to 3/4 inch (a 1.5× increase in thickness) increases stiffness by 1.5³ = 3.375× (reducing sag by more than 70%)!</p></details><details><summary>Why does adding a 1x2 solid hardwood nosing strip reduce plywood shelf sag so dramatically?</summary><p>Gluing a 3/4" × 1 1/2" solid oak or maple front edging strip onto a 3/4" plywood shelf creates an inverted L-beam along the front edge, dropping the neutral axis and cutting center deflection by 45% to 65% while hiding the plywood plies.</p></details><details><summary>Why does MDF sag more than plywood or solid red oak?</summary><p>3/4" MDF has a Modulus of Elasticity (MOE) of roughly 400,000 psi and exhibits significant long-term creep under continuous load, whereas Baltic Birch plywood (~1,200,000 psi) and solid Red Oak or Hard Maple (~1,800,000 psi) are 3 to 4.5 times stiffer.</p></details>
+    </div>
+    <div class="callout"><strong>🧰 Related Shop & Framing Calculators:</strong><ul style="margin-top:8px;margin-bottom:0"><li><a href="stair-stringer-calculator.html" style="font-weight:700;color:#1d4ed8">Stair Stringer & Rise/Run Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">IRC Code + 2D Stringer Cut Blueprint</span></li><li><a href="board-and-batten-calculator.html" style="font-weight:700;color:#1d4ed8">Board & Batten / Wainscoting Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">Equal Panel Width + Wall Elevation</span></li><li><a href="even-spacing-calculator.html" style="font-weight:700;color:#1d4ed8">Even Spacing & Baluster Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">1/16" On-Center + 4" Sphere Rule</span></li><li><a href="plywood-cut-list-optimizer.html" style="font-weight:700;color:#1d4ed8">Plywood Sheet & Cut-List Optimizer</a> — <span style="font-size:0.88rem;color:#4b5563">Kerf-Aware 2D Sheet Packing Map</span></li><li><a href="board-foot-calculator.html" style="font-weight:700;color:#1d4ed8">Hardwood Board Foot (BDFT) Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">4/4 to 16/4 Rough & S4S Lumber Tally</span></li></ul></div>
+    <div class="author-box">
+      <div class="author-avatar">PS</div>
+      <div>
+        <strong>Verified by PlumbSquare Wood Mechanics & Cabinetry Lab</strong>
+        <p style="margin:4px 0 0;font-size:0.88rem;color:#4b5563">Elastic modulus values sourced from the USDA Forest Products Laboratory Wood Handbook. Last updated October 2026.</p>
+      </div>
+    </div>
+  </article>
+</div>
+<script>
+function setSagPreset(eVal, span, depth, thick, load, lip) {
+  document.getElementById('shelfMat').value = eVal;
+  document.getElementById('shelfSpan').value = span;
+  document.getElementById('shelfDepth').value = depth;
+  document.getElementById('shelfThick').value = thick;
+  document.getElementById('shelfLoadLbs').value = load;
+  document.getElementById('edgingDrop').value = lip;
+  calcSag();
+}
+function computeSag(E, span, depth, thick, lipDrop, load) {
+  var I_shelf = (depth * Math.pow(thick, 3)) / 12;
+  var I_lip = lipDrop > thick ? ((0.75 * Math.pow(lipDrop, 3)) / 12) * (1820000 / E) : 0;
+  var I_total = I_shelf + I_lip;
+  return (5 * load * Math.pow(span, 3)) / (384 * E * I_total);
+}
+function calcSag() {
+  var E = parseFloat(document.getElementById('shelfMat').value) || 1200000;
+  var span = parseFloat(document.getElementById('shelfSpan').value) || 36;
+  var depth = parseFloat(document.getElementById('shelfDepth').value) || 10;
+  var thick = parseFloat(document.getElementById('shelfThick').value) || 0.75;
+  var lip = parseFloat(document.getElementById('edgingDrop').value) || 1.5;
+  var load = parseFloat(document.getElementById('shelfLoadLbs').value) || 75;
+
+  var sagIn = computeSag(E, span, depth, thick, lip, load);
+  var sagMm = sagIn * 25.4;
+  var maxAllowedIn = (span / 12) * 0.02;
+  var bareSagIn = computeSag(E, span, depth, thick, thick, load);
+
+  document.getElementById('sagBadge').textContent = 'Sag: ' + sagIn.toFixed(3) + '" (' + sagMm.toFixed(2) + ' mm)';
+  document.getElementById('sagReadout').textContent = 'CENTER DEFLECTION: ' + sagIn.toFixed(3) + '" (LIMIT: ' + maxAllowedIn.toFixed(3) + '")';
+
+  var statusEl = document.getElementById('sagStatus');
+  if (sagIn <= maxAllowedIn) {
+    statusEl.className = 'code-status pass';
+    statusEl.textContent = '✅ PASSES L/600 INVISIBLE SAG STANDARD: Center deflection (' + sagIn.toFixed(3) + '" / ' + sagMm.toFixed(2) + ' mm) is below the ' + maxAllowedIn.toFixed(3) + '" visual limit.';
+  } else {
+    statusEl.className = 'code-status warn';
+    statusEl.textContent = '⚠️ VISIBLE SAG WARNING: Deflection (' + sagIn.toFixed(3) + '") exceeds ' + maxAllowedIn.toFixed(3) + '" limit! Add a 1×2 hardwood front lip, increase thickness, or shorten span.';
+  }
+
+  var kpiHtml = [
+    { l: 'Center Deflection (Sag)', v: sagIn.toFixed(3) + '"', s: sagMm.toFixed(2) + ' mm under ' + load + ' lbs', h: true },
+    { l: 'Max Invisible Limit', v: maxAllowedIn.toFixed(3) + '"', s: '0.020" per foot of span (L/600)', h: true },
+    { l: 'Bare Shelf Sag (No Lip)', v: bareSagIn.toFixed(3) + '"', s: lip > thick ? 'Lip cuts sag by ' + Math.round((1 - sagIn / bareSagIn) * 100) + '%' : 'Currently un-lipped' },
+    { l: 'Load Per Linear Foot', v: (load / (span / 12)).toFixed(1) + ' lb/ft', s: 'Heavy books ≈ 25 lbs/ft' }
+  ].map(function(k) {
+    return '<div class="kpi-card' + (k.h ? ' highlight' : '') + '"><div class="kpi-label">' + k.l + '</div><div class="kpi-val">' + k.v + '</div><div class="kpi-sub">' + k.s + '</div></div>';
+  }).join('');
+  document.getElementById('sagKpis').innerHTML = kpiHtml;
+
+  var dipPx = Math.min(85, Math.max(6, (sagIn / maxAllowedIn) * 26));
+  var col = sagIn <= maxAllowedIn ? '#34d399' : '#f87171';
+  var svg = '<svg width="100%" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">' +
+    '<rect x="55" y="45" width="18" height="120" fill="#475569" stroke="#93c5fd"/>' +
+    '<rect x="647" y="45" width="18" height="120" fill="#475569" stroke="#93c5fd"/>' +
+    '<line x1="73" y1="65" x2="647" y2="65" stroke="rgba(255,255,255,0.35)" stroke-dasharray="5,5"/>' +
+    '<path d="M 73 65 Q 360 ' + (65 + dipPx * 2).toFixed(1) + ' 647 65" fill="none" stroke="' + col + '" stroke-width="8"/>' +
+    '<text x="360" y="42" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="12">UNLOADED DATUM LINE · SPAN = ' + span + '" (' + (span / 12).toFixed(1) + ' FT) · LOAD = ' + load + ' LBS</text>' +
+    '<text x="360" y="182" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="13" font-weight="bold">MID-SPAN DEFLECTION = ' + sagIn.toFixed(3) + '" (' + sagMm.toFixed(2) + ' mm) · ALLOWED = ' + maxAllowedIn.toFixed(3) + '"</text></svg>';
+  document.getElementById('sagSvgBox').innerHTML = svg;
+
+  var testSpans = [24, 30, 32, 36, 42, 48];
+  var tbody = testSpans.map(function(s) {
+    var sg = computeSag(E, s, depth, thick, lip, load);
+    var lim = (s / 12) * 0.02;
+    var ok = sg <= lim ? '✅ Pass (Rigid)' : '⚠️ Bows Visibly';
+    return '<tr><td class="mono">' + s + '" (' + (s / 12).toFixed(1) + ' ft)</td><td class="mono">' + sg.toFixed(3) + '"</td><td class="mono">' + (sg * 25.4).toFixed(2) + ' mm</td><td class="mono">' + lim.toFixed(3) + '"</td><td>' + ok + '</td></tr>';
+  }).join('');
+  document.querySelector('#sagTable tbody').innerHTML = tbody;
+}
+window.onPSUnitChange = calcSag;
+PS.loadUrlParams(); calcSag(); document.addEventListener('DOMContentLoaded', function() { PS.loadUrlParams(); calcSag(); });
+</script>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>📐 PlumbSquare Carpentry & Framing Lab</h4>
+        <p style="margin-bottom:12px">Precision browser-based layout calculators, 2D cut-list optimizers, and IRC code-checked blueprints for North American, UK, Canadian, and Australian builders, woodworkers, and DIY homeowners. 100% client-side, zero login required.</p>
+        <p style="font-size:0.82rem;color:#93c5fd">✓ Imperial Tape-Measure Fractions (1/16") &nbsp;·&nbsp; ✓ Metric (mm/cm) &nbsp;·&nbsp; ✓ Printable Shop Cut Sheets</p>
+      </div>
+      <div>
+        <h4>Layout Calculators</h4>
+        <ul>
+          <li><a href="../tools/stair-stringer-calculator.html">Stair Stringer Calculator</a></li>
+          <li><a href="../tools/board-and-batten-calculator.html">Board & Batten Layout</a></li>
+          <li><a href="../tools/even-spacing-calculator.html">Even Spacing & Balusters</a></li>
+          <li><a href="../tools/plywood-cut-list-optimizer.html">Plywood Cut Optimizer</a></li>
+          <li><a href="../tools/board-foot-calculator.html">Board Foot (BDFT) Tally</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Framing & Exterior</h4>
+        <ul>
+          <li><a href="../tools/wall-stud-framing-calculator.html">Wall Stud Framing (16/24 OC)</a></li>
+          <li><a href="../tools/deck-board-joist-calculator.html">Deck Board & Joist Estimator</a></li>
+          <li><a href="../tools/fence-post-picket-calculator.html">Fence Post & Concrete Bags</a></li>
+          <li><a href="../tools/crown-molding-miter-calculator.html">Crown Molding Miter Angles</a></li>
+          <li><a href="../tools/cabinet-shelf-sag-calculator.html">Cabinet Shelf Sag Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reference & Legal</h4>
+        <ul>
+          <li><a href="../guides/index.html">All Carpentry Guides</a></li>
+          <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Nominal vs Actual Sizes</a></li>
+          <li><a href="../guides/irc-stair-building-code-guide.html">IRC Stair Code Guide</a></li>
+          <li><a href="../about.html">About & Methodology</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Building Code Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PlumbSquare — Precision Woodworking & Construction Utilities. All calculations run locally in your browser.</span>
+      <span>Verify all structural dimensions against local municipal building codes before cutting lumber.</span>
+    </div>
+  </div>
+</footer>
+<script defer src="../assets/app.js?v=2"></script>
+</body>
+</html>

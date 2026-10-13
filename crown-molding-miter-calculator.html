@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crown Molding Angle Calculator – 38° & 45° Compound Miter & Bevel Chart | PlumbSquare</title>
+<meta name="description" content="Free crown molding and compound miter angle calculator. Get exact miter swivel and blade bevel tilt angles for 38°, 45°, and 52° crown on any wall corner.">
+<meta name="author" content="PlumbSquare Engineering & Carpentry Lab">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://plumbsquare.github.io/tools/crown-molding-miter-calculator.html">
+<meta property="og:title" content="Crown Molding Angle Calculator – 38° & 45° Compound Miter & Bevel Chart | PlumbSquare">
+<meta property="og:description" content="Free crown molding and compound miter angle calculator. Get exact miter swivel and blade bevel tilt angles for 38°, 45°, and 52° crown on any wall corner.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://plumbsquare.github.io/tools/crown-molding-miter-calculator.html">
+<meta property="og:image" content="https://plumbsquare.github.io/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="512x512" href="../images/logo.png">
+<link rel="apple-touch-icon" href="../images/logo.png">
+<link rel="stylesheet" href="../assets/style.css?v=2">
+<style id="ps-inline-css">
+/* ==========================================================================
+   PlumbSquare — Precision Carpentry, Framing & Woodworking Calculators
+   Design System: Workshop Slate + Blueprint Navy + Cedar Amber
+   100% Mobile-Responsive (Zero Horizontal Overflow), Print-Ready (@media print)
+   ========================================================================== */
+
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --surface-alt: #edf1f7;
+  --blueprint-bg: #0f1e36;
+  --blueprint-grid: rgba(120, 175, 255, 0.12);
+  --blueprint-line: #60a5fa;
+  --blueprint-accent: #fbbf24;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --primary: #1d4ed8;
+  --primary-dark: #1e3a8a;
+  --accent: #d97706;
+  --accent-light: #fef3c7;
+  --success: #047857;
+  --success-bg: #ecfdf5;
+  --ok: #047857;
+  --ok-bg: #ecfdf5;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --border: #d1d5db;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(15, 30, 54, 0.07);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Header & Navigation */
+.site-header {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #111827;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.brand span {
+  color: var(--blueprint-accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--blueprint-accent);
+}
+
+/* Global Unit Toggle Pill */
+.unit-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.unit-btn {
+  background: transparent;
+  color: #d1d5db;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.unit-btn.active {
+  background: var(--blueprint-accent);
+  color: #111827;
+}
+
+@media (max-width: 680px) {
+  .nav-bar {
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .nav-bar nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .nav-links {
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .unit-btn {
+    padding: 4px 8px;
+    font-size: 0.74rem;
+  }
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 14px 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.breadcrumb a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #0f1e36 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 34px 24px;
+  border-radius: var(--radius);
+  margin: 16px 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #0f1e36 0%, #172e5c 100%);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+}
+
+.hero-badge,
+.hero-tag {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--blueprint-accent);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(1.55rem, 4vw, 2.35rem);
+  line-height: 1.22;
+  font-weight: 800;
+  margin-bottom: 12px;
+  max-width: 820px;
+}
+
+.hero h1 span {
+  color: var(--blueprint-accent);
+}
+
+.hero p {
+  color: #d1d5db;
+  font-size: 1.02rem;
+  max-width: 740px;
+  margin-bottom: 20px;
+}
+
+.hero-badges,
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+}
+
+.trust-pill,
+.hero-stat {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f3f4f6;
+}
+
+.hero-stat strong {
+  display: block;
+  font-size: 0.96rem;
+  color: var(--blueprint-accent);
+}
+
+.hero-stat span {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin: 18px 0 6px;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+/* Tool Layout Grid — minmax(0, ...) prevents grid children from causing horizontal overflow */
+.calc-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: 22px;
+  margin: 14px 0 28px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .calc-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .panel {
+    padding: 15px 14px;
+  }
+}
+
+.panel-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+/* Preset Pills */
+.preset-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.preset-btn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.preset-btn:hover {
+  background: #dbeafe;
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Form Controls */
+.field-group {
+  margin-bottom: 13px;
+  min-width: 0;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+label,
+.field-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+label .unit-hint {
+  font-weight: 600;
+  font-size: 0.76rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.input-row {
+  width: 100%;
+}
+
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  max-width: 100%;
+  padding: 9px 11px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.96rem;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.field-help {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.btn-primary {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+/* Blueprint Diagram Box */
+.blueprint-card {
+  background: var(--blueprint-bg);
+  border-radius: 10px;
+  padding: 14px;
+  color: #fff;
+  margin-bottom: 16px;
+  border: 1px solid #1e3a8a;
+  max-width: 100%;
+  overflow: hidden;
+  background-image:
+    linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.blueprint-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: #93c5fd;
+  font-family: var(--font-mono);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+}
+
+.svg-stage {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+}
+
+.svg-stage svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* KPI Result Cards */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.kpi-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.kpi-card.highlight {
+  background: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.kpi-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.kpi-val {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--blueprint-bg);
+  font-family: var(--font-mono);
+  line-height: 1.25;
+}
+
+.kpi-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Code Compliance Status Banner */
+.code-status {
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.code-status.pass {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid #a7f3d0;
+}
+
+.code-status.warn {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+/* Action Toolbar (PNG Export, Print, Share Link) */
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.action-btn,
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  transition: all 0.15s;
+}
+
+.action-btn.primary,
+.btn-action.primary {
+  background: var(--blueprint-bg);
+  color: #fff;
+  border-color: var(--blueprint-bg);
+}
+
+.action-btn:hover,
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Data Tables & Cut Lists */
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+table.data-table th {
+  background: var(--blueprint-bg);
+  color: #fff;
+  padding: 9px 10px;
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+table.data-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+table.data-table tr:nth-child(even) td {
+  background: var(--surface-alt);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* Cards Grid for Homepage */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 18px 0 36px;
+  width: 100%;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.16s, box-shadow 0.16s, border-color 0.16s;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.12);
+}
+
+.tool-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: #dbeafe;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.tool-card h3 {
+  font-size: 1.15rem;
+  color: var(--blueprint-bg);
+  margin-bottom: 8px;
+}
+
+.tool-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.tool-card-link {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Technical Guide Article Styling */
+article.guide-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 22px 0;
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  article.guide-content {
+    padding: 18px 14px;
+  }
+}
+
+article.guide-content h1 {
+  font-size: clamp(1.4rem, 3.5vw, 1.95rem);
+  color: var(--blueprint-bg);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+article.guide-content h2 {
+  font-size: clamp(1.18rem, 2.8vw, 1.4rem);
+  color: var(--blueprint-bg);
+  margin: 24px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--surface-alt);
+}
+
+article.guide-content h3 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin: 18px 0 8px;
+}
+
+article.guide-content p,
+article.guide-content li {
+  margin-bottom: 12px;
+  color: #1f2937;
+  overflow-wrap: break-word;
+}
+
+article.guide-content ul,
+article.guide-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.formula-box {
+  background: #0f1e36;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin: 14px 0;
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-left: 4px solid var(--accent);
+}
+
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 13px 16px;
+  border-radius: 6px;
+  margin: 16px 0;
+  font-size: 0.92rem;
+  overflow-wrap: break-word;
+}
+
+.faq-list details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.faq-list summary {
+  font-weight: 700;
+  color: var(--blueprint-bg);
+  cursor: pointer;
+}
+
+.faq-list details p {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+}
+
+.author-box {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blueprint-bg);
+  color: var(--blueprint-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.site-footer {
+  width: 100%;
+  background: var(--blueprint-bg);
+  color: #9ca3af;
+  padding: 36px 0 28px;
+  margin-top: 48px;
+  font-size: 0.88rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 0.96rem;
+}
+
+.site-footer ul {
+  list-style: none;
+}
+
+.site-footer li {
+  margin-bottom: 7px;
+}
+
+.site-footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Toast Notification */
+.ps-toast {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  left: 18px;
+  max-width: 360px;
+  margin-left: auto;
+  background: #0f1e36;
+  color: #fff;
+  border: 1px solid var(--blueprint-accent);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Print Stylesheet (@media print) */
+@media print {
+  .site-header,
+  .site-footer,
+  .preset-bar,
+  .action-bar,
+  .breadcrumb,
+  article.guide-content {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .calc-workspace {
+    grid-template-columns: 1fr;
+  }
+  .panel {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
+
+
+/* Rock-Solid Mobile Viewport Lock (320px - 960px) */
+html, body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  position: relative;
+}
+.site-header, .site-footer, .container, .calc-workspace, .panel, .field-group, .field-row, .blueprint-card, .svg-stage, .table-wrap, article.guide-content {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+select, input[type="number"], input[type="text"], input[type="email"], textarea {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-overflow: ellipsis;
+}
+@media (max-width: 960px) {
+  .calc-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .calc-workspace > .panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 680px) {
+  .nav-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .nav-bar .brand {
+    justify-content: space-between;
+  }
+  .nav-bar nav {
+    order: 2 !important;
+    width: 100% !important;
+    overflow-x: visible !important;
+  }
+  .nav-links {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px 12px !important;
+  }
+  .unit-switch {
+    order: 3 !important;
+    align-self: flex-start !important;
+  }
+}
+
+</style>
+<script id="ps-inline-js">
+/*!
+ * PlumbSquare — Core Carpentry Math, Fractional Tape-Measure Engine,
+ * URL Permalink State, and Jobsite Blueprint PNG Exporter (assets/app.js)
+ * 100% Client-Side, Zero External Dependencies.
+ */
+(function () {
+  "use strict";
+
+  function gcd(a, b) {
+    a = Math.abs(Math.round(a));
+    b = Math.abs(Math.round(b));
+    while (b) {
+      var t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  var PS = {
+    unitMode: localStorage.getItem("ps_unit_mode") || "imperial", // 'imperial' | 'metric'
+
+    /* Convert decimal inches to nearest 1/16" (or 1/32") tape-measure string */
+    toFraction: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      var neg = inches < 0 ? "-" : "";
+      var val = Math.abs(inches);
+      var whole = Math.floor(val + 1e-9);
+      var rem = val - whole;
+      var num = Math.round(rem * denom);
+      if (num === denom) {
+        whole += 1;
+        num = 0;
+      }
+      if (num === 0) return neg + whole + '"';
+      var g = gcd(num, denom);
+      var n = num / g;
+      var d = denom / g;
+      return neg + (whole > 0 ? whole + " " : "") + n + "/" + d + '"';
+    },
+
+    /* Convert decimal inches to Feet + Fractional Inches: e.g. 14' 6 3/16" */
+    toFeetInches: function (inches, denom) {
+      denom = denom || 16;
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        return (mm / 1000).toFixed(2) + " m (" + Math.round(mm) + " mm)";
+      }
+      var totalSixteenths = Math.round(Math.abs(inches) * denom);
+      var totalIn = totalSixteenths / denom;
+      var ft = Math.floor(totalIn / 12 + 1e-9);
+      var remIn = totalIn - ft * 12;
+      if (ft === 0) return PS.toFraction(remIn, denom);
+      return ft + "' " + PS.toFraction(remIn, denom);
+    },
+
+    /* Format a length (stored internally in inches) according to active unit mode */
+    fmtLen: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      if (PS.unitMode === "metric") {
+        var mm = inches * 25.4;
+        if (Math.abs(mm) >= 1000) {
+          return (mm / 1000).toFixed(3) + " m (" + Math.round(mm) + " mm)";
+        }
+        return Math.round(mm) + " mm";
+      }
+      return PS.toFraction(inches, denom || 16);
+    },
+
+    /* Format dual output: e.g., 14 3/16" (360 mm) */
+    fmtDual: function (inches, denom) {
+      if (!isFinite(inches)) return "—";
+      var frac = PS.toFraction(inches, denom || 16);
+      var mm = Math.round(inches * 25.4);
+      return PS.unitMode === "metric"
+        ? mm + " mm (" + frac + ")"
+        : frac + " (" + mm + " mm)";
+    },
+
+    /* Parse user input string that may be decimal ("14.375") or fraction ("14 3/8") */
+    parseFrac: function (str) {
+      if (typeof str === "number") return str;
+      str = String(str || "").trim().replace(/"|in|mm|cm/gi, "").trim();
+      if (!str) return 0;
+      var parts = str.split(/\s+/);
+      if (parts.length === 2 && parts[1].indexOf("/") > -1) {
+        var whole = parseFloat(parts[0]) || 0;
+        var f = parts[1].split("/");
+        var frac = (parseFloat(f[0]) || 0) / (parseFloat(f[1]) || 1);
+        return whole >= 0 ? whole + frac : whole - frac;
+      }
+      if (str.indexOf("/") > -1) {
+        var f2 = str.split("/");
+        return (parseFloat(f2[0]) || 0) / (parseFloat(f2[1]) || 1);
+      }
+      return parseFloat(str) || 0;
+    },
+
+    /* Toast notification */
+    toast: function (msg) {
+      var old = document.querySelector(".ps-toast");
+      if (old) old.remove();
+      var el = document.createElement("div");
+      el.className = "ps-toast";
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(function () {
+        if (el.parentNode) el.remove();
+      }, 2800);
+    },
+
+    /* Switch global unit mode */
+    setUnitMode: function (mode) {
+      PS.unitMode = mode === "metric" ? "metric" : "imperial";
+      try {
+        localStorage.setItem("ps_unit_mode", PS.unitMode);
+      } catch (e) {}
+      document.querySelectorAll(".unit-btn").forEach(function (b) {
+        b.classList.toggle("active", b.getAttribute("data-unit") === PS.unitMode);
+      });
+      if (typeof window.onPSUnitChange === "function") {
+        window.onPSUnitChange(PS.unitMode);
+      }
+    },
+
+    /* Load URL query parameters into form inputs (#id) */
+    loadUrlParams: function () {
+      var params = new URLSearchParams(window.location.search);
+      var loaded = false;
+      params.forEach(function (val, key) {
+        if (key === "unit" && (val === "imperial" || val === "metric")) {
+          PS.unitMode = val;
+          return;
+        }
+        var el = document.getElementById(key);
+        if (el && (el.tagName === "INPUT" || el.tagName === "SELECT")) {
+          if (el.type === "checkbox") el.checked = val === "1" || val === "true";
+          else el.value = val;
+          loaded = true;
+        }
+      });
+      return loaded;
+    },
+
+    /* Copy shareable permalink with current calculator inputs */
+    copyShareLink: function () {
+      var params = new URLSearchParams();
+      params.set("unit", PS.unitMode);
+      document.querySelectorAll(".calc-workspace input, .calc-workspace select").forEach(function (el) {
+        if (!el.id) return;
+        if (el.type === "checkbox") params.set(el.id, el.checked ? "1" : "0");
+        else if (el.value !== "") params.set(el.id, el.value);
+      });
+      var url = window.location.origin + window.location.pathname + "?" + params.toString();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          PS.toast("✅ Shareable project link copied to clipboard!");
+        });
+      } else {
+        window.prompt("Copy your project link:", url);
+      }
+    },
+
+    /* Render current SVG diagram + KPIs + Cut List into a high-res PNG shop card */
+    exportBlueprintPNG: function (toolTitle) {
+      var svgEl = document.querySelector(".svg-stage svg");
+      var kpis = [];
+      document.querySelectorAll(".kpi-card").forEach(function (c) {
+        var lbl = c.querySelector(".kpi-label");
+        var val = c.querySelector(".kpi-val");
+        var sub = c.querySelector(".kpi-sub");
+        if (lbl && val) {
+          kpis.push({
+            label: lbl.textContent.trim(),
+            value: val.textContent.trim(),
+            sub: sub ? sub.textContent.trim() : ""
+          });
+        }
+      });
+
+      var rows = [];
+      var table = document.querySelector(".calc-workspace table.data-table");
+      if (table) {
+        table.querySelectorAll("tr").forEach(function (tr, idx) {
+          if (idx > 10) return;
+          var cells = [];
+          tr.querySelectorAll("th, td").forEach(function (td) {
+            cells.push(td.textContent.trim());
+          });
+          if (cells.length) rows.push(cells);
+        });
+      }
+
+      var canvas = document.createElement("canvas");
+      var W = 1200;
+      var tableH = rows.length ? 48 + rows.length * 34 : 0;
+      var H = 640 + tableH;
+      canvas.width = W;
+      canvas.height = H;
+      var ctx = canvas.getContext("2d");
+
+      // Background
+      ctx.fillStyle = "#0f1e36";
+      ctx.fillRect(0, 0, W, H);
+
+      // Subtle Blueprint Grid
+      ctx.strokeStyle = "rgba(96, 165, 250, 0.12)";
+      ctx.lineWidth = 1;
+      for (var gx = 0; gx < W; gx += 25) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+      }
+      for (var gy = 0; gy < H; gy += 25) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+
+      // Header Banner
+      ctx.fillStyle = "#172e5c";
+      ctx.fillRect(0, 0, W, 78);
+      ctx.fillStyle = "#fbbf24";
+      ctx.fillRect(0, 75, W, 3);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 26px system-ui, -apple-system, sans-serif";
+      ctx.fillText("PLUMBSQUARE · JOBSITE CUT & LAYOUT SHEET", 32, 48);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "bold 18px system-ui, -apple-system, sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText(toolTitle || document.title.split("–")[0].trim(), W - 32, 48);
+      ctx.textAlign = "left";
+
+      // Draw KPI boxes on the left
+      var kx = 32, ky = 104;
+      kpis.slice(0, 6).forEach(function (k, idx) {
+        var col = idx % 2;
+        var row = Math.floor(idx / 2);
+        var bx = kx + col * 220;
+        var by = ky + row * 94;
+        ctx.fillStyle = "rgba(255,255,255,0.07)";
+        ctx.strokeStyle = "rgba(147,197,253,0.35)";
+        ctx.lineWidth = 1.5;
+        ctx.fillRect(bx, by, 206, 82);
+        ctx.strokeRect(bx, by, 206, 82);
+
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "bold 12px system-ui, sans-serif";
+        ctx.fillText(k.label.toUpperCase().slice(0, 26), bx + 12, by + 24);
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px monospace";
+        ctx.fillText(k.value.slice(0, 16), bx + 12, by + 52);
+
+        if (k.sub) {
+          ctx.fillStyle = "#d1d5db";
+          ctx.font = "11px system-ui, sans-serif";
+          ctx.fillText(k.sub.slice(0, 28), bx + 12, by + 71);
+        }
+      });
+
+      function finishAndDownload() {
+        // Draw table if present
+        if (rows.length) {
+          var ty = 420;
+          ctx.fillStyle = "#fbbf24";
+          ctx.font = "bold 16px system-ui, sans-serif";
+          ctx.fillText("TAPE-MEASURE HOOK MARKS / CUT SCHEDULE", 32, ty - 12);
+          var colW = Math.floor((W - 64) / (rows[0].length || 1));
+          rows.forEach(function (r, rIdx) {
+            var ry = ty + rIdx * 32;
+            ctx.fillStyle = rIdx === 0 ? "#1e3a8a" : (rIdx % 2 === 0 ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.1)");
+            ctx.fillRect(32, ry, W - 64, 30);
+            ctx.fillStyle = rIdx === 0 ? "#fbbf24" : "#f3f4f6";
+            ctx.font = (rIdx === 0 ? "bold 13px " : "13px ") + "monospace";
+            r.forEach(function (cell, cIdx) {
+              ctx.fillText(String(cell).slice(0, 28), 44 + cIdx * colW, ry + 20);
+            });
+          });
+        }
+
+        // Footer
+        ctx.fillStyle = "#93c5fd";
+        ctx.font = "13px system-ui, sans-serif";
+        ctx.fillText("Generated free on PlumbSquare · Verify all measurements on-site before cutting lumber.", 32, H - 18);
+
+        var a = document.createElement("a");
+        var slug = (location.pathname.split("/").pop() || "blueprint").replace(/\.html$/, "");
+        a.download = "plumbsquare-" + slug + "-plan.png";
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+        PS.toast("📷 Jobsite Blueprint PNG downloaded!");
+      }
+
+      if (svgEl) {
+        var xml = new XMLSerializer().serializeToString(svgEl);
+        var svg64 = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(xml);
+        var img = new Image();
+        img.onload = function () {
+          ctx.drawImage(img, 485, 100, 680, 290);
+          finishAndDownload();
+        };
+        img.onerror = finishAndDownload;
+        img.src = svg64;
+      } else {
+        finishAndDownload();
+      }
+    }
+  };
+
+  window.PS = PS;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".unit-btn").forEach(function (btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-unit") === PS.unitMode);
+      btn.addEventListener("click", function () {
+        PS.setUnitMode(btn.getAttribute("data-unit"));
+      });
+    });
+  });
+})();
+
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Crown Molding & Compound Miter Angle Calculator", "applicationCategory": "DesignApplication", "operatingSystem": "Web Browser", "url": "https://plumbsquare.github.io/tools/crown-molding-miter-calculator.html", "description": "Free compound miter and blade bevel angle calculator for 38, 45, and 52 degree crown molding, out-of-square corners, and polygons.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What are the miter and bevel angles for 90-degree crown molding with a 38-degree spring angle?", "acceptedAnswer": {"@type": "Answer", "text": "When cutting standard 38-degree spring-angle crown molding flat on the miter saw table for a 90-degree wall corner, set your miter saw table swivel angle to 31.62 degrees (31.6°) and tilt the saw blade bevel to 33.85 degrees (33.9°). That is why most miter saws have permanent detents marked at 31.6° miter and 33.9° bevel!"}}, {"@type": "Question", "name": "What are the miter and bevel settings for 45-degree spring-angle crown molding?", "acceptedAnswer": {"@type": "Answer", "text": "For 45-degree spring-angle crown molding on a standard 90-degree inside or outside corner, set the miter saw swivel to 35.26 degrees (35.3°) and the blade bevel tilt to 30.00 degrees (30.0°)."}}, {"@type": "Question", "name": "What is crown molding spring angle and how do I measure it?", "acceptedAnswer": {"@type": "Answer", "text": "The spring angle is the angle between the back of the crown molding and the vertical wall when installed against the ceiling. Standard North American colonial crown is either 38° (52/38 profile) or 45° (45/45 profile). Place a framing square against the bottom wall flat and measure the gap against the top ceiling flat to identify yours."}}, {"@type": "Question", "name": "What if my drywall corner is not exactly 90 degrees?", "acceptedAnswer": {"@type": "Answer", "text": "Drywall mud buildup often pushes outside corners to 88°–89° and inside corners to 91°–92°. Measure the true corner angle with a digital angle finder, enter that exact angle into the Wall Corner Angle box above, and cut to the computed tenth of a degree for gap-free joints."}}, {"@type": "Question", "name": "How do I calculate flat miter angles for a 6-sided hexagon or 8-sided octagon picture frame?", "acceptedAnswer": {"@type": "Answer", "text": "For any flat N-sided regular polygon frame (spring angle = 0°), each corner interior angle is ((N - 2) × 180°) ÷ N, and the saw miter cut angle from 0° square is 180° ÷ N (which equals 30.0° for a 6-sided hexagon and 22.5° for an 8-sided octagon)."}}]}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="../index.html">
+      <span class="brand-icon">📐</span>
+      Plumb<span>Square</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="../index.html#calculators">Calculators</a></li>
+        <li><a href="../guides/index.html">Shop Guides</a></li>
+        <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Lumber Chart</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="unit-switch" role="group" aria-label="Measurement Unit System">
+      <button type="button" class="unit-btn active" data-unit="imperial">🇺🇸 Imperial (1/16")</button>
+      <button type="button" class="unit-btn" data-unit="metric">🌍 Metric (mm)</button>
+    </div>
+  </div>
+</header>
+
+
+<div class="container">
+  <nav class="breadcrumb"><a href="../index.html">Home</a> › <a href="../index.html#calculators">Calculators</a> › Crown Molding & Compound Miter Calculator</nav>
+  <div class="calc-workspace">
+    <div class="panel">
+      <div class="panel-title">📐 Crown Spring & Wall Corner Angles</div>
+      <div class="preset-bar">
+        <button type="button" class="preset-btn" onclick="setMiterPreset(38, 90)">90° Corner (38° Crown)</button>
+        <button type="button" class="preset-btn" onclick="setMiterPreset(45, 90)">90° Corner (45° Crown)</button>
+        <button type="button" class="preset-btn" onclick="setMiterPreset(38, 135)">135° Bay Window (38°)</button>
+        <button type="button" class="preset-btn" onclick="setMiterPreset(0, 120)">Hexagon Frame (Flat 0°)</button>
+      </div>
+      <div class="field-group">
+        <label for="springAngle">Molding Spring / Flare Angle <span class="unit-hint">degrees</span></label>
+        <select id="springAngle" onchange="calcMiter()">
+          <option value="38" selected>38° Standard Colonial Crown (52/38 Profile)</option>
+          <option value="45">45° Traditional Crown (45/45 Profile)</option>
+          <option value="52">52° Deep-Projection Crown</option>
+          <option value="0">0° Flat Trim / Baseboard / Picture Frame</option>
+          <option value="30">30° Flared Hopper / Planter Box Side</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field-group">
+          <label for="cornerAngle">Wall Corner Angle <span class="unit-hint">degrees (90° std)</span></label>
+          <input type="number" id="cornerAngle" value="90" min="30" max="175" step="0.5" oninput="calcMiter()">
+          <div class="field-help">Standard square corner = 90°, bay window = 135°</div>
+        </div>
+        <div class="field-group">
+          <label for="polySides">Or Polygon Sides (Optional)</label>
+          <select id="polySides" onchange="applyPolygon()">
+            <option value="0" selected>Custom Wall Corner Angle</option>
+            <option value="4">4 Sides — Square Frame (90°)</option>
+            <option value="5">5 Sides — Pentagon (108°)</option>
+            <option value="6">6 Sides — Hexagon (120°)</option>
+            <option value="8">8 Sides — Octagon (135°)</option>
+            <option value="12">12 Sides — Dodecagon (150°)</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="btn-primary" onclick="calcMiter()">Calculate Saw Miter & Bevel Settings</button>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span>Saw Table Protractor & Compound Blade Settings</span>
+        <span id="miterBadge" style="font-size:0.82rem;color:#1d4ed8;font-family:monospace"></span>
+      </div>
+      <div id="miterStatus" class="code-status pass"></div>
+      <div class="blueprint-card">
+        <div class="blueprint-header">
+          <span>COMPOUND MITER SAW SWIVEL & BEVEL PROTRACTOR</span>
+          <span id="miterReadout">MITER / BEVEL</span>
+        </div>
+        <div class="svg-stage" id="miterSvgBox"></div>
+      </div>
+      <div class="kpi-grid" id="miterKpis"></div>
+      <div class="action-bar">
+        <button type="button" class="action-btn primary" onclick="PS.exportBlueprintPNG('Crown Molding Miter Settings')">📷 Download Angle Chart (PNG)</button>
+        <button type="button" class="action-btn" onclick="window.print()">🖨️ Print 1-Page Shop Sheet</button>
+        <button type="button" class="action-btn" onclick="PS.copyShareLink()">🔗 Share Project Link</button>
+      </div>
+      <h3 style="font-size:1.05rem;color:#0f1e36;margin-top:10px">Common Wall Corners Reference Table (For Selected Spring Angle)</h3>
+      <div class="table-wrap">
+        <table class="data-table" id="miterTable">
+          <thead>
+            <tr><th>Wall Corner Angle</th><th>Miter Saw Swivel (°)</th><th>Blade Bevel Tilt (°)</th><th>Typical Room Feature</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <article class="guide-content">
+    <h1>Crown Molding & Compound Miter Angle Calculator (38°, 45° & 52° Spring Angles)</h1>
+    <p>Cutting wide crown molding flat on a compound miter saw bed gives you complete stability and longer blade capacity than cutting nested ("upside down and backward") against the fence—provided you set the exact <strong>Miter Swivel Angle</strong> and <strong>Blade Bevel Tilt Angle</strong>. This calculator applies exact spherical trigonometry to compute compound saw settings for any wall corner from 30° to 175°.</p>
+    <figure style="margin:20px 0;text-align:center"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20760%20210%22%20width%3D%22760%22%20height%3D%22210%22%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%22760%22%20height%3D%22210%22%20rx%3D%2210%22%20fill%3D%22%230f1e36%22/%3E%0A%20%20%20%20%20%20%3Cg%20stroke%3D%22rgba%2896%2C165%2C250%2C0.14%29%22%20stroke-width%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%2240%22%20x2%3D%22760%22%20y2%3D%2240%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%2280%22%20x2%3D%22760%22%20y2%3D%2280%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%220%22%20y1%3D%22120%22%20x2%3D%22760%22%20y2%3D%22120%22/%3E%3Cline%20x1%3D%220%22%20y1%3D%22160%22%20x2%3D%22760%22%20y2%3D%22160%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22120%22%20y1%3D%220%22%20x2%3D%22120%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22280%22%20y1%3D%220%22%20x2%3D%22280%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%20%20%3Cline%20x1%3D%22440%22%20y1%3D%220%22%20x2%3D%22440%22%20y2%3D%22210%22/%3E%3Cline%20x1%3D%22600%22%20y1%3D%220%22%20x2%3D%22600%22%20y2%3D%22210%22/%3E%0A%20%20%20%20%20%20%3C/g%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2220%22%20y%3D%2220%22%20width%3D%22720%22%20height%3D%22170%22%20rx%3D%226%22%20fill%3D%22none%22%20stroke%3D%22%2360a5fa%22%20stroke-width%3D%221.5%22%20stroke-dasharray%3D%226%2C4%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2258%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2215%22%20font-weight%3D%22bold%22%3ETECHNICAL%20REFERENCE%20SPECIFICATION%20%C2%B7%20PLUMBSQUARE%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%2292%22%20fill%3D%22%23ffffff%22%20font-family%3D%22sans-serif%22%20font-size%3D%2221%22%20font-weight%3D%22bold%22%3ECompound%20Miter%20%26%20Bevel%20Trigonometric%20Equations%3C/text%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2242%22%20y%3D%22122%22%20fill%3D%22%2393c5fd%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214%22%3EMiter%20%3D%20arctan%28%20sin%28Spring%29%20/%20tan%28Corner/2%29%20%29%20%20%7C%20%20Bevel%20%3D%20arcsin%28%20cos%28Spring%29%20x%20cos%28Corner/2%29%20%29%3C/text%3E%0A%20%20%20%20%20%20%3Crect%20x%3D%2242%22%20y%3D%22138%22%20width%3D%22676%22%20height%3D%2236%22%20rx%3D%225%22%20fill%3D%22%23172e5c%22%20stroke%3D%22%23fbbf24%22%20stroke-width%3D%221%22/%3E%0A%20%20%20%20%20%20%3Ctext%20x%3D%2256%22%20y%3D%22161%22%20fill%3D%22%23fbbf24%22%20font-family%3D%22monospace%22%20font-size%3D%2214%22%20font-weight%3D%22bold%22%3E38%20deg%20Crown%20%40%2090%20deg%20Corner%20-%3E%20Miter%20%3D%2031.62%20deg%20%C2%B7%20Bevel%20%3D%2033.85%20deg%3C/text%3E%0A%20%20%20%20%3C/svg%3E" alt="Compound Miter & Bevel Trigonometric Equations - Miter = arctan( sin(Spring) / tan(Corner/2) )  |  Bevel = arcsin( cos(Spring) x cos(Corner/2) ) diagram" width="760" height="210" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #d1d5db"><figcaption style="font-size:0.84rem;color:#4b5563;margin-top:6px">Figure 1: Architectural field layout reference for Compound Miter & Bevel Trigonometric Equations (Miter = arctan( sin(Spring) / tan(Corner/2) )  |  Bevel = arcsin( cos(Spring) x cos(Corner/2) )).</figcaption></figure>
+    <h2>1. Exact Spherical Trigonometry Formulas for Flat-Cut Crown Molding</h2>
+    <div class="formula-box">
+      Half Corner Angle (C) = Wall_Corner_Angle ÷ 2<br>
+      Miter Saw Table Angle = arctan( cos(Spring_Angle) ÷ tan(C) )   [for Hopper/Tilted Sides]<br>
+      Crown Flat Miter Angle = arctan( sin(Spring_Angle) ÷ tan(C) )<br>
+      Crown Blade Bevel Angle = arcsin( cos(Spring_Angle) × cos(C) )
+    </div>
+    <h2>2. Master Reference Chart: 38° vs. 45° Crown Molding Settings</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Wall Corner Angle</th><th>38° Crown Miter</th><th>38° Crown Bevel</th><th>45° Crown Miter</th><th>45° Crown Bevel</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>88° Tight Out-of-Square</strong></td><td class="mono">32.7°</td><td class="mono">34.7°</td><td class="mono">36.4°</td><td class="mono">30.8°</td></tr>
+          <tr><td><strong>90° Standard Corner</strong></td><td class="mono">31.6° (Detent)</td><td class="mono">33.9° (Detent)</td><td class="mono">35.3° (Detent)</td><td class="mono">30.0° (Detent)</td></tr>
+          <tr><td><strong>92° Wide Drywall Corner</strong></td><td class="mono">30.6°</td><td class="mono">33.0°</td><td class="mono">34.2°</td><td class="mono">29.2°</td></tr>
+          <tr><td><strong>135° Bay Window / Octagon</strong></td><td class="mono">14.3°</td><td class="mono">17.5°</td><td class="mono">16.3°</td><td class="mono">15.7°</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>3. Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <details><summary>What are the miter and bevel angles for 90-degree crown molding with a 38-degree spring angle?</summary><p>When cutting standard 38-degree spring-angle crown molding flat on the miter saw table for a 90-degree wall corner, set your miter saw table swivel angle to 31.62 degrees (31.6°) and tilt the saw blade bevel to 33.85 degrees (33.9°). That is why most miter saws have permanent detents marked at 31.6° miter and 33.9° bevel!</p></details><details><summary>What are the miter and bevel settings for 45-degree spring-angle crown molding?</summary><p>For 45-degree spring-angle crown molding on a standard 90-degree inside or outside corner, set the miter saw swivel to 35.26 degrees (35.3°) and the blade bevel tilt to 30.00 degrees (30.0°).</p></details><details><summary>What is crown molding spring angle and how do I measure it?</summary><p>The spring angle is the angle between the back of the crown molding and the vertical wall when installed against the ceiling. Standard North American colonial crown is either 38° (52/38 profile) or 45° (45/45 profile). Place a framing square against the bottom wall flat and measure the gap against the top ceiling flat to identify yours.</p></details><details><summary>What if my drywall corner is not exactly 90 degrees?</summary><p>Drywall mud buildup often pushes outside corners to 88°–89° and inside corners to 91°–92°. Measure the true corner angle with a digital angle finder, enter that exact angle into the Wall Corner Angle box above, and cut to the computed tenth of a degree for gap-free joints.</p></details><details><summary>How do I calculate flat miter angles for a 6-sided hexagon or 8-sided octagon picture frame?</summary><p>For any flat N-sided regular polygon frame (spring angle = 0°), each corner interior angle is ((N - 2) × 180°) ÷ N, and the saw miter cut angle from 0° square is 180° ÷ N (which equals 30.0° for a 6-sided hexagon and 22.5° for an 8-sided octagon).</p></details>
+    </div>
+    <div class="callout"><strong>🧰 Related Shop & Framing Calculators:</strong><ul style="margin-top:8px;margin-bottom:0"><li><a href="stair-stringer-calculator.html" style="font-weight:700;color:#1d4ed8">Stair Stringer & Rise/Run Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">IRC Code + 2D Stringer Cut Blueprint</span></li><li><a href="board-and-batten-calculator.html" style="font-weight:700;color:#1d4ed8">Board & Batten / Wainscoting Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">Equal Panel Width + Wall Elevation</span></li><li><a href="even-spacing-calculator.html" style="font-weight:700;color:#1d4ed8">Even Spacing & Baluster Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">1/16" On-Center + 4" Sphere Rule</span></li><li><a href="plywood-cut-list-optimizer.html" style="font-weight:700;color:#1d4ed8">Plywood Sheet & Cut-List Optimizer</a> — <span style="font-size:0.88rem;color:#4b5563">Kerf-Aware 2D Sheet Packing Map</span></li><li><a href="board-foot-calculator.html" style="font-weight:700;color:#1d4ed8">Hardwood Board Foot (BDFT) Calculator</a> — <span style="font-size:0.88rem;color:#4b5563">4/4 to 16/4 Rough & S4S Lumber Tally</span></li></ul></div>
+    <div class="author-box">
+      <div class="author-avatar">PS</div>
+      <div>
+        <strong>Verified by PlumbSquare Finish Trim & Joinery Lab</strong>
+        <p style="margin:4px 0 0;font-size:0.88rem;color:#4b5563">Trigonometric formulas match DeWalt, Makita, Bosch, and Festool Kapex crown detent calibration standards. Last updated October 2026.</p>
+      </div>
+    </div>
+  </article>
+</div>
+<script>
+function setMiterPreset(sp, corner) {
+  document.getElementById('springAngle').value = sp;
+  document.getElementById('cornerAngle').value = corner;
+  document.getElementById('polySides').value = '0';
+  calcMiter();
+}
+function applyPolygon() {
+  var n = parseInt(document.getElementById('polySides').value, 10) || 0;
+  if (n >= 3) {
+    document.getElementById('cornerAngle').value = (((n - 2) * 180) / n).toFixed(1);
+    calcMiter();
+  }
+}
+function computeCrown(springDeg, cornerDeg) {
+  if (springDeg === 0) {
+    return { miter: (180 - cornerDeg) / 2, bevel: 0 };
+  }
+  var sRad = springDeg * Math.PI / 180;
+  var halfC = (cornerDeg / 2) * Math.PI / 180;
+  var miterRad = Math.atan(Math.sin(sRad) / Math.tan(halfC));
+  var bevelRad = Math.asin(Math.cos(sRad) * Math.cos(halfC));
+  return { miter: miterRad * 180 / Math.PI, bevel: bevelRad * 180 / Math.PI };
+}
+function calcMiter() {
+  var sp = parseFloat(document.getElementById('springAngle').value) || 0;
+  var corner = parseFloat(document.getElementById('cornerAngle').value) || 90;
+  var res = computeCrown(sp, corner);
+  var nestedMiter = (180 - corner) / 2;
+
+  document.getElementById('miterBadge').textContent = 'Spring: ' + sp + '° · Corner: ' + corner + '°';
+  document.getElementById('miterReadout').textContent = 'MITER: ' + res.miter.toFixed(2) + '° · BEVEL: ' + res.bevel.toFixed(2) + '°';
+  var statusEl = document.getElementById('miterStatus');
+  statusEl.className = 'code-status pass';
+  statusEl.textContent = '✅ FLAT-ON-TABLE SAW SETTINGS: Swivel Miter Table to ' + res.miter.toFixed(2) + '° and Tilt Blade Bevel to ' + res.bevel.toFixed(2) + '° (or cut nested against fence at ' + nestedMiter.toFixed(2) + '° miter / 0° bevel).';
+
+  var kpiHtml = [
+    { l: 'Miter Saw Swivel Angle', v: res.miter.toFixed(2) + '°', s: 'Flat on saw table setting', h: true },
+    { l: 'Blade Bevel Tilt Angle', v: res.bevel.toFixed(2) + '°', s: 'Tilt blade from vertical 0°', h: true },
+    { l: 'Nested Fence Miter', v: nestedMiter.toFixed(2) + '°', s: 'Upside-down against fence (0° bevel)' },
+    { l: 'Complementary Angle', v: (90 - res.miter).toFixed(2) + '°', s: 'Protractor reference angle' }
+  ].map(function(k) {
+    return '<div class="kpi-card' + (k.h ? ' highlight' : '') + '"><div class="kpi-label">' + k.l + '</div><div class="kpi-val">' + k.v + '</div><div class="kpi-sub">' + k.s + '</div></div>';
+  }).join('');
+  document.getElementById('miterKpis').innerHTML = kpiHtml;
+
+  var mRad = res.miter * Math.PI / 180;
+  var armX = 220 + Math.sin(mRad) * 140;
+  var armY = 175 - Math.cos(mRad) * 140;
+  var bRad = res.bevel * Math.PI / 180;
+  var bevX = 520 + Math.sin(bRad) * 130;
+  var bevY = 175 - Math.cos(bRad) * 130;
+
+  var svg = '<svg width="100%" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg">' +
+    '<path d="M 80 175 A 140 140 0 0 1 360 175" fill="rgba(96,165,250,0.12)" stroke="#60a5fa" stroke-width="2"/>' +
+    '<line x1="220" y1="175" x2="220" y2="30" stroke="rgba(255,255,255,0.3)" stroke-dasharray="4,4"/>' +
+    '<line x1="220" y1="175" x2="' + armX.toFixed(1) + '" y2="' + armY.toFixed(1) + '" stroke="#fbbf24" stroke-width="4"/>' +
+    '<circle cx="220" cy="175" r="6" fill="#fbbf24"/>' +
+    '<text x="220" y="205" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="13" font-weight="bold">MITER SWIVEL: ' + res.miter.toFixed(2) + '°</text>' +
+    '<path d="M 390 175 A 130 130 0 0 1 650 175" fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="2"/>' +
+    '<line x1="520" y1="175" x2="520" y2="35" stroke="rgba(255,255,255,0.3)" stroke-dasharray="4,4"/>' +
+    '<line x1="520" y1="175" x2="' + bevX.toFixed(1) + '" y2="' + bevY.toFixed(1) + '" stroke="#34d399" stroke-width="4"/>' +
+    '<circle cx="520" cy="175" r="6" fill="#34d399"/>' +
+    '<text x="520" y="205" text-anchor="middle" fill="#ffffff" font-family="monospace" font-size="13" font-weight="bold">BLADE BEVEL: ' + res.bevel.toFixed(2) + '°</text></svg>';
+  document.getElementById('miterSvgBox').innerHTML = svg;
+
+  var sampleAngles = [
+    [88, 'Tight Outside Drywall Corner'],
+    [89, 'Slightly Tight Corner'],
+    [90, 'Standard 90° Square Room Corner'],
+    [91, 'Slightly Open Inside Corner'],
+    [92, 'Wide Mudded Drywall Corner'],
+    [120, '6-Sided Hexagon / Angled Wall'],
+    [135, '135° Bay Window / Octagon Corner']
+  ];
+  var tbody = sampleAngles.map(function(row) {
+    var c = computeCrown(sp, row[0]);
+    return '<tr><td class="mono">' + row[0] + '°</td><td class="mono">' + c.miter.toFixed(2) + '°</td><td class="mono">' + c.bevel.toFixed(2) + '°</td><td>' + row[1] + '</td></tr>';
+  }).join('');
+  document.querySelector('#miterTable tbody').innerHTML = tbody;
+}
+window.onPSUnitChange = calcMiter;
+PS.loadUrlParams(); calcMiter(); document.addEventListener('DOMContentLoaded', function() { PS.loadUrlParams(); calcMiter(); });
+</script>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>📐 PlumbSquare Carpentry & Framing Lab</h4>
+        <p style="margin-bottom:12px">Precision browser-based layout calculators, 2D cut-list optimizers, and IRC code-checked blueprints for North American, UK, Canadian, and Australian builders, woodworkers, and DIY homeowners. 100% client-side, zero login required.</p>
+        <p style="font-size:0.82rem;color:#93c5fd">✓ Imperial Tape-Measure Fractions (1/16") &nbsp;·&nbsp; ✓ Metric (mm/cm) &nbsp;·&nbsp; ✓ Printable Shop Cut Sheets</p>
+      </div>
+      <div>
+        <h4>Layout Calculators</h4>
+        <ul>
+          <li><a href="../tools/stair-stringer-calculator.html">Stair Stringer Calculator</a></li>
+          <li><a href="../tools/board-and-batten-calculator.html">Board & Batten Layout</a></li>
+          <li><a href="../tools/even-spacing-calculator.html">Even Spacing & Balusters</a></li>
+          <li><a href="../tools/plywood-cut-list-optimizer.html">Plywood Cut Optimizer</a></li>
+          <li><a href="../tools/board-foot-calculator.html">Board Foot (BDFT) Tally</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Framing & Exterior</h4>
+        <ul>
+          <li><a href="../tools/wall-stud-framing-calculator.html">Wall Stud Framing (16/24 OC)</a></li>
+          <li><a href="../tools/deck-board-joist-calculator.html">Deck Board & Joist Estimator</a></li>
+          <li><a href="../tools/fence-post-picket-calculator.html">Fence Post & Concrete Bags</a></li>
+          <li><a href="../tools/crown-molding-miter-calculator.html">Crown Molding Miter Angles</a></li>
+          <li><a href="../tools/cabinet-shelf-sag-calculator.html">Cabinet Shelf Sag Calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reference & Legal</h4>
+        <ul>
+          <li><a href="../guides/index.html">All Carpentry Guides</a></li>
+          <li><a href="../guides/nominal-vs-actual-lumber-chart.html">Nominal vs Actual Sizes</a></li>
+          <li><a href="../guides/irc-stair-building-code-guide.html">IRC Stair Code Guide</a></li>
+          <li><a href="../about.html">About & Methodology</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy (GDPR/CCPA)</a></li>
+          <li><a href="../terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="../disclaimer.html">Building Code Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PlumbSquare — Precision Woodworking & Construction Utilities. All calculations run locally in your browser.</span>
+      <span>Verify all structural dimensions against local municipal building codes before cutting lumber.</span>
+    </div>
+  </div>
+</footer>
+<script defer src="../assets/app.js?v=2"></script>
+</body>
+</html>
